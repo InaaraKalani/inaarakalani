@@ -500,6 +500,15 @@ body {
   filter: brightness(1.1);
 }
 
+.hover-text-glow {
+  transition: text-shadow 0.3s ease;
+}
+
+.hover-text-glow:hover {
+  text-shadow: 0 0 30px oklch(from var(--primary) l c h / 0.8);
+  filter: brightness(1.1);
+}
+
 .hover-scale {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -926,4 +935,11 @@ body {
 
 .bg-purple-500\/10 {
   background-color: oklch(0.488 0.243 264.376 / 0.1);
+}
+
+/* Responsive typewriter sizing */
+@media (max-width: 640px) {
+  .typewriter-text {
+    font-size: 0.9em;
+  }
 }
