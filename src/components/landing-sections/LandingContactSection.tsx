@@ -52,19 +52,19 @@ export default function LandingContactSection() {
             className="grid gap-6 sm:grid-cols-3 max-w-2xl pt-8"
             staggerDelay={100}
           >
-            <div className="text-center p-4 rounded-lg bg-card border border-primary/10 hover-lift animate-card-entrance">
+            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
               <FiMail className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
               <p className="text-sm font-medium">Email</p>
               <p className="text-sm text-muted-foreground">
                 inaara@example.com
               </p>
             </div>
-            <div className="text-center p-4 rounded-lg bg-card border border-primary/10 hover-lift animate-card-entrance">
+            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
               <FiGithub className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
               <p className="text-sm font-medium">GitHub</p>
               <p className="text-sm text-muted-foreground">@inaara-kalani</p>
             </div>
-            <div className="text-center p-4 rounded-lg bg-card border border-primary/10 hover-lift animate-card-entrance">
+            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
               <FiLinkedin className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
               <p className="text-sm font-medium">LinkedIn</p>
               <p className="text-sm text-muted-foreground">/in/inaara-kalani</p>
