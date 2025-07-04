@@ -1,0 +1,29 @@
+import { AnimatedSection } from "../ui/animated-section";
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <AnimatedSection
+      animation="fade-up"
+      className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-muted/30"
+    >
+      <p className="text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Inaara Kalani. All rights reserved.
+      </p>
+      <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+        <Link
+          href="#"
+          className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors hover-glow"
+        >
+          Privacy Policy
+        </Link>
+        <Link
+          href="#"
+          className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors hover-glow"
+        >
+          Terms of Service
+        </Link>
+      </nav>
+    </AnimatedSection>
+  );
+}
