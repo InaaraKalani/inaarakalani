@@ -1,42 +1,27 @@
+import { projects } from "@/data/projects.data";
+import { Code, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { FiGithub } from "react-icons/fi";
 import { AnimatedSection } from "../ui/animated-section";
-import { StaggeredList } from "../ui/staggered-list";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import Image from "next/image";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { ExternalLink } from "lucide-react";
-import { FiGithub } from "react-icons/fi";
-
-const projects = [
-  {
-    title: "E-commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration",
-    detailDescription:
-      "Built with Next.js, Stripe API, and PostgreSQL. Features include user authentication, product management, shopping cart, and order processing.",
-    link: "https://ecommerce-platform.com",
-    github: "https://github.com/ecommerce-platform",
-    technologies: [
-      { name: "Next.js", theme: "primary" },
-      { name: "TypeScript", theme: "primary" },
-      { name: "Stripe", theme: "accent" },
-      { name: "PostgreSQL", theme: "" },
-    ],
-    image: "/images/placeholder.svg",
-  },
-];
+import { StaggeredList } from "../ui/staggered-list";
 
 export default function LandingProjectsSection() {
   return (
     <AnimatedSection
       animation="reveal"
       className="w-full py-12 md:py-24 lg:py-32"
+      id="projects"
     >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -50,13 +35,13 @@ export default function LandingProjectsSection() {
           </div>
         </div>
         <StaggeredList
-          className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12"
+          className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-2 lg:gap-12"
           staggerDelay={300}
         >
-          {projects.map((project, index) => (
+          {projects.slice(0, 4).map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden pt-0 border-primary/10 hover:border-primary/20 transition-all hover-lift group animate-card-entrance"
+              className="overflow-hidden pt-0 border-primary/10 hover:border-primary/20 transition-all hover-lift group animate-card-entrance h-full flex flex-col"
             >
               <div className="relative overflow-hidden">
                 <Image
@@ -72,7 +57,7 @@ export default function LandingProjectsSection() {
                 <CardTitle className="text-xl">{project.title}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1">
                 <p className="text-sm text-muted-foreground mb-4">
                   {project.detailDescription}
                 </p>
@@ -90,33 +75,42 @@ export default function LandingProjectsSection() {
                     </Badge>
                   ))}
                 </StaggeredList>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-primary hover:bg-primary/90 hover-glow animate-magnetic-hover"
-                  >
-                    <Link href={project.link}>
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    asChild
-                    className="border-primary/20 hover:bg-primary/5 bg-transparent hover-glow animate-magnetic-hover"
-                  >
-                    <Link href={project.github}>
-                      <FiGithub className="h-4 w-4 mr-2" />
-                      Code
-                    </Link>
-                  </Button>
-                </div>
               </CardContent>
+              <CardFooter className="gap-2">
+                <Button
+                  size="sm"
+                  asChild
+                  className="bg-primary hover:bg-primary/90 hover-glow"
+                >
+                  <Link href={project.link} target="_blank">
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </Link>
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  asChild
+                  className="border-primary/20 hover:bg-primary/5 bg-transparent hover-glow"
+                >
+                  <Link href={project.github} target="_blank">
+                    <FiGithub className="h-4 w-4" />
+                    Code
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           ))}
         </StaggeredList>
+
+        <div className="flex justify-center">
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/projects">
+              <Code className="h-4 w-4" />
+              View All Projects
+            </Link>
+          </Button>
+        </div>
       </div>
     </AnimatedSection>
   );

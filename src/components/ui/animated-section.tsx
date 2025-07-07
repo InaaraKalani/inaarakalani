@@ -1,9 +1,9 @@
 "use client";
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
-interface AnimatedSectionProps {
+interface AnimatedSectionProps extends ComponentProps<"section"> {
   children: ReactNode;
   className?: string;
   animation?:
@@ -25,6 +25,7 @@ export function AnimatedSection({
   animation = "fade-up",
   delay = 0,
   duration = 0.8,
+  ...props
 }: AnimatedSectionProps) {
   const { ref, isVisible } = useIntersectionObserver({
     threshold: 0.1,
@@ -46,6 +47,7 @@ export function AnimatedSection({
         animationDelay: `${delay}ms`,
         animationDuration: `${duration}s`,
       }}
+      {...props}
     >
       {children}
     </section>
