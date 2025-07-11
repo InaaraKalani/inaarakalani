@@ -1,0 +1,61 @@
+import { projectStats } from "@/data/projects.data";
+import { AnimatedSection } from "../ui/animated-section";
+import { StaggeredList } from "../ui/staggered-list";
+
+export default function ProjectsHeroSection() {
+  return (
+    <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
+      <div className="container px-4 md:px-6 relative z-10">
+        <AnimatedSection animation="fade-up" duration={1}>
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                My Projects
+              </h1>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                A comprehensive showcase of my development work, from full-stack
+                applications to mobile apps and everything in between.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <StaggeredList
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8"
+              staggerDelay={100}
+            >
+              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift">
+                <div className="text-2xl font-bold text-primary mb-1">
+                  {projectStats.total}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Total Projects
+                </div>
+              </div>
+              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift">
+                <div className="text-2xl font-bold text-accent mb-1">
+                  {projectStats.completed}
+                </div>
+                <div className="text-sm text-muted-foreground">Completed</div>
+              </div>
+              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift">
+                <div className="text-2xl font-bold text-primary mb-1">
+                  {projectStats.inProgress}
+                </div>
+                <div className="text-sm text-muted-foreground">In Progress</div>
+              </div>
+              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift">
+                <div className="text-2xl font-bold text-accent mb-1">
+                  {projectStats.technologies}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Technologies
+                </div>
+              </div>
+            </StaggeredList>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
