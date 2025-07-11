@@ -1,21 +1,34 @@
+import { AppWindow, Globe, Server, Shield, Zap } from "lucide-react";
+
 enum ProjectTheme {
   primary = "primary",
   accent = "accent",
   neutral = "muted-foreground",
 }
 
-enum ProjectCategory {
+export enum ProjectCategory {
   frontend = "Frontend",
   backend = "Backend",
   fullstack = "Fullstack",
 }
 
-enum ProjectStatus {
+export enum ProjectStatus {
   completed = "Completed",
   ongoing = "In Progress",
 }
 
-const technologies = {
+export const projectCategories = [
+  { name: "Frontend", value: ProjectCategory.frontend, icon: AppWindow },
+  { name: "Backend", value: ProjectCategory.backend, icon: Server },
+  { name: "Fullstack", value: ProjectCategory.fullstack, icon: Globe },
+];
+
+export const projectStatuses = [
+  { name: "Completed", value: ProjectStatus.completed, icon: Shield },
+  { name: "In Progress", value: ProjectStatus.ongoing, icon: Zap },
+];
+
+export const technologies = {
   frontend: {
     TypeScript: {
       name: "TypeScript",
@@ -102,9 +115,40 @@ const technologies = {
       theme: ProjectTheme.neutral,
     },
   },
+  deployment: {
+    Vercel: {
+      name: "Vercel",
+      theme: ProjectTheme.neutral,
+    },
+    AWS: {
+      name: "AWS",
+      theme: ProjectTheme.neutral,
+    },
+  },
 };
 
-export const projects = [
+export type Technology = {
+  name: string;
+  theme: ProjectTheme;
+};
+
+export type ProjectType = {
+  title: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  liveUrl: string;
+  githubUrl?: string;
+  gitlabUrl?: string;
+  category: ProjectCategory;
+  status: ProjectStatus;
+  featured?: boolean;
+  year: string;
+  team: string;
+  technologies: Technology[];
+};
+
+export const projects: ProjectType[] = [
   // SettlementConsultant.ai
   {
     title: "SettlementConsultant.ai",
@@ -128,7 +172,7 @@ export const projects = [
       technologies.tools.Swagger,
     ],
   },
-  //
+  // Talent Pitch Memory Bank
   {
     title: "Talent Pitch Memory Bank",
     description: "",
@@ -317,5 +361,7 @@ export const projectStats = {
   inProgress: projects.filter(
     (project) => project.status === ProjectStatus.ongoing
   ).length,
-  technologies: projects.flatMap((project) => project.technologies).length,
+  technologies: Object.values(technologies).flatMap((tech) =>
+    Object.values(tech)
+  ).length,
 };

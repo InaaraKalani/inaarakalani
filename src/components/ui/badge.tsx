@@ -13,6 +13,9 @@ export const variant = {
   outline:
     "border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
   ghost: "bg-transparent text-foreground [a&]:hover:bg-transparent",
+  green: "border bg-green-500/10 text-green-600 border-green-500/20",
+  yellow: "border bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
+  purple: "border bg-purple-500/10 text-purple-600 border-purple-500/20",
 };
 
 const badgeVariants = cva(

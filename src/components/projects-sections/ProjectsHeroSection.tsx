@@ -10,18 +10,18 @@ export default function ProjectsHeroSection() {
         <AnimatedSection animation="fade-up" duration={1}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold leading-normal tracking-tighter sm:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift">
                 My Projects
               </h1>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                A comprehensive showcase of my development work, from full-stack
-                applications to mobile apps and everything in between.
+                A comprehensive showcase of my work, from interactive websites
+                to full-stack apps and more.
               </p>
             </div>
 
             {/* Stats */}
             <StaggeredList
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4"
               staggerDelay={100}
             >
               <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift">
