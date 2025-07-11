@@ -68,8 +68,7 @@ export default function LandingProjectsSection() {
                   {project.technologies.map((technology) => (
                     <Badge
                       key={technology.name}
-                      variant="outline"
-                      className={`border-${technology.theme}/20 text-${technology.theme} hover-scale`}
+                      className={`border-${technology.theme}/20 text-${technology.theme}`}
                     >
                       {technology.name}
                     </Badge>
@@ -77,11 +76,7 @@ export default function LandingProjectsSection() {
                 </StaggeredList>
               </CardContent>
               <CardFooter className="gap-2">
-                <Button
-                  size="sm"
-                  asChild
-                  className="bg-primary hover:bg-primary/90 hover-glow"
-                >
+                <Button size="sm" asChild variant="ghost">
                   <Link href={project.link} target="_blank">
                     <ExternalLink className="h-4 w-4" />
                     Live Demo

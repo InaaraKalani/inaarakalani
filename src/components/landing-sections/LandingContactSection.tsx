@@ -1,8 +1,9 @@
-import { AnimatedSection } from "../ui/animated-section";
-import { StaggeredList } from "../ui/staggered-list";
-import { Button } from "../ui/button";
+import { contactSocialLinks, Email, LinkedIn } from "@/lib/app.data";
 import Link from "next/link";
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiLinkedin, FiMail } from "react-icons/fi";
+import { AnimatedSection } from "../ui/animated-section";
+import { Button } from "../ui/button";
+import { StaggeredList } from "../ui/staggered-list";
 
 export default function LandingContactSection() {
   return (
@@ -26,12 +27,8 @@ export default function LandingContactSection() {
             className="flex flex-col gap-4 min-[400px]:flex-row"
             staggerDelay={150}
           >
-            <Button
-              size="lg"
-              asChild
-              className="bg-primary hover:bg-primary/90 hover-lift animate-magnetic-hover"
-            >
-              <Link href="mailto:inaara@example.com">
+            <Button size="lg" asChild>
+              <Link href={Email.url}>
                 <FiMail className="h-4 w-4 mr-2" />
                 Send Email
               </Link>
@@ -40,9 +37,9 @@ export default function LandingContactSection() {
               size="lg"
               variant="outline"
               asChild
-              className="border-primary/20 hover:bg-primary/5 bg-transparent hover-glow animate-magnetic-hover"
+              className="border-primary/20 hover:bg-primary/5 bg-transparent hover-glow"
             >
-              <Link href="#">
+              <Link href={LinkedIn.url}>
                 <FiLinkedin className="h-4 w-4 mr-2" />
                 Connect on LinkedIn
               </Link>
@@ -52,23 +49,15 @@ export default function LandingContactSection() {
             className="grid gap-6 sm:grid-cols-3 max-w-2xl pt-8"
             staggerDelay={100}
           >
-            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
-              <FiMail className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
-              <p className="text-sm font-medium">Email</p>
-              <p className="text-sm text-muted-foreground">
-                inaara@example.com
-              </p>
-            </div>
-            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
-              <FiGithub className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
-              <p className="text-sm font-medium">GitHub</p>
-              <p className="text-sm text-muted-foreground">@inaara-kalani</p>
-            </div>
-            <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
-              <FiLinkedin className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
-              <p className="text-sm font-medium">LinkedIn</p>
-              <p className="text-sm text-muted-foreground">/in/inaara-kalani</p>
-            </div>
+            {contactSocialLinks.map((e) => (
+              <Link href={e.url} key={e.label} className="w-full">
+                <div className="text-center p-4 rounded-lg border border-primary/10 hover-lift animate-card-entrance">
+                  <e.icon className="h-6 w-6 mx-auto mb-2 text-primary animate-wiggle" />
+                  <p className="text-sm font-medium">{e.label}</p>
+                  <p className="text-sm text-muted-foreground">{e.name}</p>
+                </div>
+              </Link>
+            ))}
           </StaggeredList>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { MorphingText } from "@/components/ui/morphing-text";
 import { ParallaxElement } from "@/components/ui/parallax-element";
 import { ParticleSystem } from "@/components/ui/particle-system";
 import { StaggeredList } from "@/components/ui/staggered-list";
-import { landingHeroTexts, socialLinks } from "@/lib/app.data";
+import { heroSocialLinks, landingHeroTexts } from "@/lib/app.data";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -60,14 +60,14 @@ export default function LandingHeroSection() {
 
               {/* Social Links */}
               <StaggeredList className="flex gap-4 pt-4" staggerDelay={100}>
-                {socialLinks.map((link) => (
+                {heroSocialLinks.map((link) => (
                   <Link
-                    key={link.name}
+                    key={link.label}
                     href={link.url}
                     className="text-muted-foreground hover:text-primary transition-colors hover-scale"
                   >
                     <link.icon className="h-6 w-6" />
-                    <span className="sr-only">{link.name}</span>
+                    <span className="sr-only">{link.label}</span>
                   </Link>
                 ))}
               </StaggeredList>
