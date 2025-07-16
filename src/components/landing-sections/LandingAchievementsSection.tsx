@@ -7,7 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Calendar, Trophy } from "lucide-react";
+import { Trophy } from "lucide-react";
+import { achievements } from "@/data/achievements.data";
 
 export default function LandingAchievementsSection() {
   return (
@@ -27,94 +28,41 @@ export default function LandingAchievementsSection() {
           </div>
         </div>
         <StaggeredList
-          className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12"
+          itemClassName="h-full"
+          className="mx-auto grid grid-cols-1 max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12"
           staggerDelay={250}
         >
-          <Card className="border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-500/10 hover-rotate">
-                  <Trophy className="h-6 w-6 text-yellow-600 dark:text-yellow-400 animate-wiggle" />
+          {achievements.map((achievement, index) => (
+            <Card
+              key={index}
+              className="h-full border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance"
+            >
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`flex size-12 items-center justify-center rounded-lg bg-${achievement.color}-500/10 hover-rotate`}
+                  >
+                    <Trophy
+                      className={`size-6 text-${achievement.color}-600 dark:text-${achievement.color}-400 animate-wiggle`}
+                    />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl">
+                      {achievement.title}
+                    </CardTitle>
+                    <CardDescription className="flex items-center gap-1">
+                      {achievement.highlight}
+                    </CardDescription>
+                  </div>
                 </div>
-                <div>
-                  <CardTitle className="text-xl">Hackathon Winner</CardTitle>
-                  <CardDescription className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    TechCrunch Disrupt 2023
-                  </CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                First place winner for developing an AI-powered accessibility
-                tool that helps visually impaired users navigate websites more
-                effectively.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500/10 hover-rotate">
-                  <Trophy className="h-6 w-6 text-blue-600 dark:text-blue-400 animate-wiggle" />
-                </div>
-                <div>
-                  <CardTitle className="text-xl">
-                    Open Source Contributor
-                  </CardTitle>
-                  <CardDescription>React & Next.js Ecosystem</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Active contributor to popular open-source projects with over 50
-                merged PRs and 1000+ GitHub stars across personal repositories.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-500/10 hover-rotate">
-                  <Trophy className="h-6 w-6 text-green-600 dark:text-green-400 animate-wiggle" />
-                </div>
-                <div>
-                  <CardTitle className="text-xl">AWS Certified</CardTitle>
-                  <CardDescription>
-                    Solutions Architect Associate
-                  </CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Certified in AWS cloud architecture and services, demonstrating
-                expertise in designing scalable and secure cloud solutions.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/10 hover-rotate">
-                  <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-400 animate-wiggle" />
-                </div>
-                <div>
-                  <CardTitle className="text-xl">Tech Speaker</CardTitle>
-                  <CardDescription>Conference Presentations</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Presented at 3 major tech conferences on topics including modern
-                React patterns, web performance optimization, and accessibility
-                best practices.
-              </p>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                  {achievement.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </StaggeredList>
       </div>
     </AnimatedSection>

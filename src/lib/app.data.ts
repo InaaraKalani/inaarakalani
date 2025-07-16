@@ -37,6 +37,5 @@ export const contactSocialLinks = [Email, GitHub, LinkedIn];
 export const navLinks = [
   { name: "About", url: "/about" },
   { name: "Projects", url: "/projects" },
-  { name: "Achievements", url: "/achievements" },
-  { name: "Contact", url: "/contact" },
+  { name: "LinkedIn", url: LinkedIn.url },
 ];
