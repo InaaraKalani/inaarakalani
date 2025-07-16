@@ -39,5 +39,5 @@ export const FutureGoals = [
   "Master's in Artificial Intelligence",
   "Experience nature & connect with open-minded people",
   "Create original music",
-  "Work for women empowerment & wildlife protection",
+  "Work for women empowerment, environment & wildlife protection",
 ];

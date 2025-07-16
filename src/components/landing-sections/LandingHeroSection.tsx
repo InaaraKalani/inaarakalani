@@ -6,8 +6,8 @@ import { ParticleSystem } from "@/components/ui/particle-system";
 import { StaggeredList } from "@/components/ui/staggered-list";
 import { heroSocialLinks, landingHeroTexts } from "@/lib/app.data";
 import { MapPin } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import LandingHeroProfileImage from "./LandingHeroProfileImage";
 
 export default function LandingHeroSection() {
   return (
@@ -17,6 +17,7 @@ export default function LandingHeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
       <div className="container px-4 mx-auto md:px-6 relative z-10">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+          {/* Content */}
           <AnimatedSection animation="fade-right" duration={1} delay={200}>
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
@@ -74,18 +75,13 @@ export default function LandingHeroSection() {
             </div>
           </AnimatedSection>
 
+          {/* Image */}
           <AnimatedSection animation="fade-left" duration={1} delay={400}>
             <div className="flex items-center justify-center">
               <ParallaxElement speed={0.3}>
                 <div className="relative animate-float">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 animate-pulse-glow" />
-                  <Image
-                    src="/images/placeholder.svg"
-                    width="400"
-                    height="400"
-                    alt="Profile"
-                    className="relative aspect-square overflow-hidden rounded-full object-cover border-4 border-background shadow-2xl hover-glow animate-morph"
-                  />
+                  <LandingHeroProfileImage />
                 </div>
               </ParallaxElement>
             </div>
