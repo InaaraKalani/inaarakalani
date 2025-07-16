@@ -114,6 +114,10 @@ export const technologies = {
       name: "Swagger",
       theme: ProjectTheme.neutral,
     },
+    OpenAI: {
+      name: "OpenAI",
+      theme: ProjectTheme.neutral,
+    },
   },
   deployment: {
     Vercel: {
@@ -146,54 +150,62 @@ export type ProjectType = {
   year: string;
   team: string;
   technologies: Technology[];
+  highlights: string[];
 };
 
 export const projects: ProjectType[] = [
   // SettlementConsultant.ai
   {
     title: "SettlementConsultant.ai",
-    description: "",
-    longDescription: "",
+    description:
+      "A financial platform for managing settlements, installment sales, and fee deferrals.",
+    longDescription:
+      "Built with Next.js, Node.js, REST APIs, and Swagger documentation, this platform helps sellers, claimants, and attorneys efficiently calculate and manage structured settlements, installment sales, and deferred fees—all in one streamlined interface.",
     image: "",
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: "https://github.com/ShakirYasin/settlement-consultant",
     category: ProjectCategory.fullstack,
-    status: ProjectStatus.completed,
+    status: ProjectStatus.ongoing,
     featured: false,
     year: "2025",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.MongoDB,
       technologies.backend.RESTAPIs,
       technologies.ui.ShadcnUI,
       technologies.tools.Swagger,
     ],
+    highlights: ["Role-Based Access Control", "Multi-User Workflow"],
   },
   // Talent Pitch Memory Bank
   {
     title: "Talent Pitch Memory Bank",
-    description: "",
-    longDescription: "",
+    description:
+      "An AI-powered tool to process Google Drive files and answer natural language queries.",
+    longDescription:
+      "Built with Next.js, Node.js, and OpenAI, the app answers user queries by searching Google Sheets, Docs, and Drive—no manual browsing needed.",
     image: "/projects/talent-pitch-memory-bank.png",
     liveUrl: "https://talent-pitch-memory-bank-frontend.vercel.app",
     githubUrl:
       "https://github.com/InaaraKalani/talent-pitch-memory-bank-frontend",
     category: ProjectCategory.fullstack,
     status: ProjectStatus.completed,
-    featured: false,
+    featured: true,
     year: "2025",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.TypeScript,
+      technologies.tools.OpenAI,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ShadcnUI,
       technologies.ui.TailwindCSS,
     ],
+    highlights: ["AI Chat Interface", "Google Drive Integration"],
   },
   // Gates and Doors Inc.
   {
@@ -211,11 +223,12 @@ export const projects: ProjectType[] = [
     year: "2025",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.cms.Sanity,
       technologies.ui.ShadcnUI,
     ],
+    highlights: ["CMS Integration", "Product Management"],
   },
   // IDarea
   {
@@ -232,13 +245,14 @@ export const projects: ProjectType[] = [
     year: "2025",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ShadcnUI,
       technologies.ui.ChartJS,
     ],
+    highlights: ["Wallet Management", "Data Visualization"],
   },
   // Vollyme
   {
@@ -256,13 +270,14 @@ export const projects: ProjectType[] = [
     year: "2024",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.GraphQL,
       technologies.backend.MongoDB,
       technologies.ui.ChakraUI,
     ],
+    highlights: ["Social Media Platform", "Full Customization"],
   },
   // Dog Lovers
   {
@@ -275,17 +290,18 @@ export const projects: ProjectType[] = [
     githubUrl: "https://github.com/InaaraKalani/dog-lovers",
     category: ProjectCategory.fullstack,
     status: ProjectStatus.completed,
-    featured: true,
+    featured: false,
     year: "2023",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ChakraUI,
       technologies.ui.FramerMotion,
     ],
+    highlights: ["Advanced Animations", "Payment Integration"],
   },
   // IVDrips
   {
@@ -302,14 +318,15 @@ export const projects: ProjectType[] = [
     year: "2023",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.NodeJS,
       technologies.backend.MongoDB,
       technologies.backend.Prisma,
       technologies.ui.ChakraUI,
       technologies.cms.Contentful,
     ],
+    highlights: ["Service Booking System", "CMS Integration"],
   },
   // Inspiria
   {
@@ -326,11 +343,12 @@ export const projects: ProjectType[] = [
     year: "2023",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.TypeScript,
       technologies.frontend.NextJS,
+      technologies.frontend.TypeScript,
       technologies.backend.RESTAPIs,
       technologies.ui.MaterialUI,
     ],
+    highlights: ["Vacation Planning", "REST API Integration"],
   },
   // QriosityNet
   {
@@ -346,11 +364,12 @@ export const projects: ProjectType[] = [
     year: "2022",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.JavaScript,
       technologies.frontend.React,
+      technologies.frontend.JavaScript,
       technologies.backend.Firebase,
       technologies.ui.MaterialUI,
     ],
+    highlights: ["Job Board & Applications", "Firebase Integration"],
   },
 ];
 

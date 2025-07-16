@@ -67,7 +67,7 @@ export default function LandingProjectsSection() {
                     className="flex flex-wrap gap-2 mb-4"
                     staggerDelay={50}
                   >
-                    {project.technologies.map((technology) => (
+                    {project.technologies.slice(0, 4).map((technology) => (
                       <Badge
                         key={technology.name}
                         className={`border-${technology.theme}/20 text-${technology.theme}`}

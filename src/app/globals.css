@@ -75,6 +75,14 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  /* Custom colors */
+  --color-blue: oklch(0.646 0.222 264.376);
+  --color-light-blue: oklch(0.8399 0.0696 266.86);
+  --color-purple: oklch(0.5576 0.2877 302.3);
+  --color-light-purple: oklch(0.8902 0.0359 299.36);
+  --color-orange: oklch(0.769 0.188 70.08);
+  --color-light-orange: oklch(0.8935 0.0652 90.86);
+
   /* Custom gradient colors */
   --color-gradient-primary-start: oklch(0.646 0.222 264.376);
   --color-gradient-primary-end: oklch(0.769 0.188 70.08);
@@ -895,40 +903,12 @@ body {
   color: oklch(0.828 0.189 84.429);
 }
 
-.text-blue-600 {
-  color: oklch(0.646 0.222 264.376);
-}
-
-.text-blue-400 {
-  color: oklch(0.696 0.17 162.48);
-}
-
-.text-green-600 {
-  color: oklch(0.627 0.265 303.9);
-}
-
-.text-green-400 {
-  color: oklch(0.645 0.246 16.439);
-}
-
-.text-purple-600 {
-  color: oklch(0.488 0.243 264.376);
-}
-
 .text-purple-400 {
   color: oklch(0.627 0.265 303.9);
 }
 
 .bg-yellow-500\/10 {
   background-color: oklch(0.769 0.188 70.08 / 0.1);
-}
-
-.bg-blue-500\/10 {
-  background-color: oklch(0.646 0.222 264.376 / 0.1);
-}
-
-.bg-green-500\/10 {
-  background-color: oklch(0.627 0.265 303.9 / 0.1);
 }
 
 .bg-purple-500\/10 {
