@@ -15,7 +15,7 @@ export default function LandingHeroProfileImage() {
       width="400"
       height="400"
       alt="Profile"
-      className="relative aspect-square overflow-hidden rounded-full object-cover border-4 border-background shadow-2xl hover-glow animate-morph"
+      className="relative aspect-square overflow-hidden rounded-full object-cover border-4 border-border hover:border-background transition-all shadow-2xl hover-glow animate-morph"
     />
   );
 }

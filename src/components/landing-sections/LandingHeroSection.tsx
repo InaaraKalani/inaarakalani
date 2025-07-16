@@ -15,14 +15,14 @@ export default function LandingHeroSection() {
       <ParticleSystem />
 
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
-      <div className="container px-4 mx-auto md:px-6 relative z-10">
+      <div className="container relative z-10">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           {/* Content */}
           <AnimatedSection animation="fade-right" duration={1} delay={200}>
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 {/* Badge */}
-                <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm">
+                <div className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm">
                   <MapPin className="h-3 w-3 mr-1 animate-wiggle" />
                   Karachi, Pakistan
                 </div>

@@ -12,7 +12,7 @@ export default function LandingContactSection() {
       className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
-      <div className="container px-4 md:px-6 relative z-10">
+      <div className="container relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold leading-normal tracking-tighter sm:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift">

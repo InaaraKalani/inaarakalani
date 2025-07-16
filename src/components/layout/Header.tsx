@@ -7,7 +7,7 @@ import { navLinks } from "@/lib/app.data";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-blur:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-blur:bg-background/60">
       <AnimatedSection animation="fade-down" duration={0.6}>
         <div className="container flex h-16 items-center px-4 lg:px-6">
           <AppLogo />

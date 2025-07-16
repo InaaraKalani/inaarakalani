@@ -33,7 +33,7 @@ export default function ProjectsFilterSection({
 }: ProjectFilterSectionProps) {
   return (
     <section className="w-full py-8 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="container">
         <AnimatedSection animation="fade-up" delay={200}>
           <div className="flex flex-col gap-6">
             {/* Search */}

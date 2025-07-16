@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <AnimatedSection
       animation="fade-up"
-      className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-muted/30"
+      className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-border bg-muted/30"
     >
       <p className="text-xs text-muted-foreground">
         © {new Date().getFullYear()} Inaara Kalani. All rights reserved.

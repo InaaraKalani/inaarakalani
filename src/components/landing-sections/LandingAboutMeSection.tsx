@@ -18,7 +18,7 @@ export default function LandingAboutMeSection() {
       animation="fade-up"
       className="w-full py-12 md:py-24 lg:py-32 bg-muted/30"
     >
-      <div className="container px-4 mx-auto md:px-6">
+      <div className="container md:px-6">
         {/* Heading */}
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -100,7 +100,7 @@ export default function LandingAboutMeSection() {
         </StaggeredList>
 
         <div className="flex justify-center">
-          <Button size="lg" variant="outline" asChild>
+          <Button size="lg" variant="outline" className="hover-lift" asChild>
             <Link href="/about">Learn More</Link>
           </Button>
         </div>
