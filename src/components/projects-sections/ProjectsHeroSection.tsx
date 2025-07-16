@@ -9,6 +9,7 @@ export default function ProjectsHeroSection() {
       <div className="container relative z-10">
         <AnimatedSection animation="fade-up" duration={1}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            {/* Heading and Description */}
             <div className="space-y-2">
               <h1 className="text-3xl font-bold leading-normal tracking-tighter sm:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift">
                 My Projects
@@ -24,7 +25,7 @@ export default function ProjectsHeroSection() {
               className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4"
               staggerDelay={100}
             >
-              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift">
+              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift cursor-pointer">
                 <div className="text-2xl font-bold text-primary mb-1">
                   {projectStats.total}
                 </div>
@@ -32,19 +33,19 @@ export default function ProjectsHeroSection() {
                   Total Projects
                 </div>
               </div>
-              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift">
+              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift cursor-pointer">
                 <div className="text-2xl font-bold text-accent mb-1">
                   {projectStats.completed}
                 </div>
                 <div className="text-sm text-muted-foreground">Completed</div>
               </div>
-              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift">
+              <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift cursor-pointer">
                 <div className="text-2xl font-bold text-primary mb-1">
                   {projectStats.inProgress}
                 </div>
                 <div className="text-sm text-muted-foreground">In Progress</div>
               </div>
-              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift">
+              <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift cursor-pointer">
                 <div className="text-2xl font-bold text-accent mb-1">
                   {projectStats.technologies}
                 </div>

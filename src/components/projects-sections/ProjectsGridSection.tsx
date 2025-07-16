@@ -50,16 +50,18 @@ export default function ProjectsGridSection({
               >
                 {/* Image */}
                 <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/images/placeholder.svg"}
-                    width="500"
-                    height="300"
-                    alt={project.title}
-                    className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
-                  />
+                  <Link href={project.liveUrl} target="_blank">
+                    <Image
+                      src={project.image || "/images/placeholder.svg"}
+                      width="500"
+                      height="300"
+                      alt={project.title}
+                      className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                    />
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
 
                   {/* Status Badge */}
                   <div className="absolute top-3 left-3 z-10">
@@ -155,7 +157,7 @@ export default function ProjectsGridSection({
                 <CardFooter className="gap-2">
                   {/* Live Demo Button */}
                   <Button variant="ghost" asChild className="flex-1">
-                    <Link href={project.liveUrl}>
+                    <Link href={project.liveUrl} target="_blank">
                       <ExternalLink className="size-4" />
                       Live Demo
                     </Link>
@@ -164,7 +166,10 @@ export default function ProjectsGridSection({
                   {/* Github / GitLab Button */}
                   {(project.githubUrl || project.gitlabUrl) && (
                     <Button variant="outline" asChild className="flex-1">
-                      <Link href={project.githubUrl || project.gitlabUrl || ""}>
+                      <Link
+                        href={project.githubUrl || project.gitlabUrl || ""}
+                        target="_blank"
+                      >
                         {project.githubUrl && <FiGithub className="size-4" />}
                         {project.gitlabUrl && <FiGitlab className="size-4" />}
                         Code
