@@ -8,6 +8,7 @@ interface StaggeredListProps {
   className?: string;
   itemClassName?: string;
   staggerDelay?: number;
+  threshold?: number;
 }
 
 export function StaggeredList({
@@ -15,9 +16,10 @@ export function StaggeredList({
   className = "",
   itemClassName = "",
   staggerDelay = 100,
+  threshold = 0.1,
 }: StaggeredListProps) {
   const { ref, isVisible } = useIntersectionObserver({
-    threshold: 0.1,
+    threshold,
     rootMargin: "-30px",
   });
 
