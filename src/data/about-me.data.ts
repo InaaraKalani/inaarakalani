@@ -163,3 +163,47 @@ export const academicBackground = [
     period: "2013-2015",
   },
 ];
+
+export const extracurricularActivities = [
+  {
+    title: "Music & Creative Writing",
+    icon: "🎵",
+    description:
+      "Writing poetry and songs has been a lifelong passion—something I've done since childhood. I studied piano and music theory for 7 months and share my work on Instagram to express and inspire. I also love listening to music from different genres and cultures.",
+    highlights: [
+      "Poetry & Songwriting",
+      "Piano & Music Theory",
+      "Music Appreciation",
+    ],
+  },
+
+  {
+    title: "Gaming & Global Connections",
+    icon: "🎮",
+    description:
+      "Gaming sparked my love for connecting with people from different backgrounds. I’ve built strong, lasting friendships with people I met online during COVID, and I actively explore Discord servers and real-life communities built on shared interests.",
+    highlights: [
+      "Cross-cultural Communication",
+      "Online & Offline Communities",
+      "Strategic Thinking",
+    ],
+  },
+  {
+    title: "Book Reading & Imagination",
+    icon: "📚",
+    description:
+      "I’m an avid fiction reader, especially drawn to fantasy worlds that spark imagination and empathy. Books have shaped my thinking and continue to inspire my creativity and worldview.",
+    highlights: [
+      "Fiction & Fantasy",
+      "Imaginative Thinking",
+      "Lifelong Curiosity",
+    ],
+  },
+  {
+    title: "Love for Animals",
+    icon: "🐾",
+    description:
+      "Animals have always held a special place in my heart. Living with my cat Sherlock has deepened my empathy—teaching me how to feel and connect beyond words. I dream of helping animals, protecting them, and simply seeing them happy and safe.",
+    highlights: ["Deep Empathy", "Animal Welfare", "Nonverbal Connection"],
+  },
+];

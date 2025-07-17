@@ -77,35 +77,42 @@ export default function AboutExperienceSection() {
                 </CardContent>
                 {experience.history && (
                   <CardFooter className="flex-col items-start -mt-4">
-                    {experience.history.map((history, historyIndex) => (
-                      <div key={historyIndex} className="flex flex-col">
-                        {/* Dots */}
-                        <div className="flex flex-col gap-1 size-12 items-center justify-center">
-                          <div className="size-1 bg-muted-foreground/50 rounded-full" />
-                          <div className="size-1 bg-muted-foreground/75 rounded-full" />
-                          <div className="size-1 bg-muted-foreground/50 rounded-full" />
-                        </div>
+                    <StaggeredList staggerDelay={200}>
+                      {experience.history.map((history, historyIndex) => (
+                        <div key={historyIndex} className="flex flex-col">
+                          {/* Dots */}
+                          <StaggeredList
+                            className="flex flex-col gap-1 size-12 items-center justify-center"
+                            staggerDelay={200}
+                          >
+                            <div className="size-1 bg-muted-foreground/50 rounded-full" />
+                            <div className="size-1 bg-muted-foreground/75 rounded-full" />
+                            <div className="size-1 bg-muted-foreground/50 rounded-full" />
+                          </StaggeredList>
 
-                        {/* History */}
-                        <div className="flex items-center gap-4">
-                          <div className="flex size-12 items-center justify-center rounded-lg bg-accent/10 opacity-60 hover-rotate shrink-0">
-                            <Briefcase className="size-6 text-accent" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="mb-1">
-                              {history.title}
-                            </CardTitle>
-                            <div className="flex text-sm flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground">
-                              <span className="font-medium">
-                                {history.company}
-                              </span>
-                              <span className="hidden sm:block">•</span>
-                              <span className="text-sm">{history.period}</span>
+                          {/* History */}
+                          <div className="flex items-center gap-4">
+                            <div className="flex size-12 items-center justify-center rounded-lg bg-accent/10 opacity-60 hover-rotate shrink-0">
+                              <Briefcase className="size-6 text-accent" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="mb-1">
+                                {history.title}
+                              </CardTitle>
+                              <div className="flex text-sm flex-col sm:flex-row sm:items-center gap-2 text-muted-foreground">
+                                <span className="font-medium">
+                                  {history.company}
+                                </span>
+                                <span className="hidden sm:block">•</span>
+                                <span className="text-sm">
+                                  {history.period}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </StaggeredList>
                   </CardFooter>
                 )}
               </Card>
