@@ -1,13 +1,9 @@
-import { AnimatedSection } from "../ui/animated-section";
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer>
-      <AnimatedSection
-        animation="fade-up"
-        className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-border bg-muted/30"
-      >
+      <div className="container flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center border-t border-border bg-muted/30">
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Inaara Kalani. All rights reserved.
         </p>
@@ -25,7 +21,7 @@ export default function Footer() {
             Terms of Service
           </Link>
         </nav>
-      </AnimatedSection>
+      </div>
     </footer>
   );
 }

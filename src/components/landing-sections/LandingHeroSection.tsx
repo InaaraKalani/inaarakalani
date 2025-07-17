@@ -7,7 +7,7 @@ import { StaggeredList } from "@/components/ui/staggered-list";
 import { heroSocialLinks, landingHeroTexts } from "@/lib/app.data";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
-import LandingHeroProfileImage from "./LandingHeroProfileImage";
+import ProfileImageHalf from "../profile-images/ProfileImageHalf";
 
 export default function LandingHeroSection() {
   return (
@@ -81,7 +81,7 @@ export default function LandingHeroSection() {
               <ParallaxElement speed={0.3}>
                 <div className="relative animate-float">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 animate-pulse-glow" />
-                  <LandingHeroProfileImage />
+                  <ProfileImageHalf />
                 </div>
               </ParallaxElement>
             </div>

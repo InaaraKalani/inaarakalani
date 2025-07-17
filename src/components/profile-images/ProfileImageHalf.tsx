@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
 
-export default function LandingHeroProfileImage() {
+export default function ProfileImageHalf() {
   const { theme } = useTheme();
   return (
     <Image
