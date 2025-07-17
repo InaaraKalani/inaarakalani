@@ -1,16 +1,6 @@
 import { BadgeVariant } from "@/components/ui/badge";
 import { AppWindow, Database, PencilRuler } from "lucide-react";
 
-export const academicBackground =
-  "Bachelor of Science in Computer Science from SZABIST (2017-2021)";
-
-export const academicAchievements = [
-  "GPA: 3.74/4.0 - Top of the batch",
-  "Valedictorian & Gold Medalist",
-  "Chancellor's Honor Roll",
-  "Merit scholarship: 6 semesters",
-];
-
 export const TechnicalSkills = [
   // Frontend
   { skill: "Next.js", variant: BadgeVariant.primary },
@@ -142,5 +132,34 @@ export const workExperience = [
         period: "April 2020 - April 2021",
       },
     ],
+  },
+];
+
+export const academicBackground = [
+  {
+    title: "Computer Science Degree",
+    description:
+      "Bachelor of Science in Computer Science from SZABIST (2017-2021)",
+    institution: "SZABIST",
+    period: "2017-2021",
+    achievements: [
+      "GPA: 3.74/4.0 - Top of the batch",
+      "Valedictorian & Gold Medalist",
+      "Chancellor's Honor Roll",
+      "Merit scholarship: 6 semesters",
+    ],
+  },
+  {
+    title: "Intermediate",
+    description:
+      "Computer Science from Habib Girls Higher Secondary School (2015-2017)",
+    institution: "Habib Girls Higher Secondary School",
+    period: "2015-2017",
+  },
+  {
+    title: "Matriculation",
+    description: "General Science from Aga Khan School, Garden (2015-2015)",
+    institution: "Aga Khan School, Garden",
+    period: "2013-2015",
   },
 ];

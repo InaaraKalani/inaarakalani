@@ -1,5 +1,4 @@
 import {
-  academicAchievements,
   academicBackground,
   FutureGoals,
   TechnicalSkills,
@@ -47,10 +46,10 @@ export default function LandingAboutMeSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {academicBackground}
+                  {academicBackground[0].description}
                 </p>
                 <StaggeredList staggerDelay={100}>
-                  {academicAchievements.map((e, i) => (
+                  {academicBackground[0].achievements?.map((e, i) => (
                     <li key={i} className="flex items-center text-sm">
                       <div className="h-1.5 w-1.5 rounded-full bg-primary mr-2 animate-pulse-glow" />
                       {e}
