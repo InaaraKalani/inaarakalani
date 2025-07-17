@@ -26,7 +26,7 @@ export default function AboutAcademicsSection() {
               >
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 hover-rotate">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 shrink-0 hover-rotate">
                       <GraduationCap className="h-6 w-6 text-primary" />
                     </div>
                     <div>
