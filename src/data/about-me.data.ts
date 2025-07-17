@@ -13,29 +13,29 @@ export const academicAchievements = [
 
 export const TechnicalSkills = [
   // Frontend
-  { skill: "Next.js", theme: "primary" },
-  { skill: "React.js", theme: "primary" },
-  { skill: "TypeScript", theme: "primary" },
-  { skill: "Javascript", theme: "primary" },
+  { skill: "Next.js", variant: BadgeVariant.primary },
+  { skill: "React.js", variant: BadgeVariant.primary },
+  { skill: "TypeScript", variant: BadgeVariant.primary },
+  { skill: "Javascript", variant: BadgeVariant.primary },
 
   // Backend
-  { skill: "Node.js", theme: "accent" },
-  { skill: "MongoDB", theme: "accent" },
-  { skill: "GraphQL", theme: "accent" },
-  { skill: "Prisma", theme: "accent" },
-  { skill: "Firebase", theme: "accent" },
-  { skill: "REST API", theme: "accent" },
+  { skill: "Node.js", variant: BadgeVariant.accent },
+  { skill: "MongoDB", variant: BadgeVariant.accent },
+  { skill: "GraphQL", variant: BadgeVariant.accent },
+  { skill: "Prisma", variant: BadgeVariant.accent },
+  { skill: "Firebase", variant: BadgeVariant.accent },
+  { skill: "REST API", variant: BadgeVariant.accent },
 
   // UI Frameworks
-  { skill: "Shadcn UI", theme: "secondary" },
-  { skill: "Chakra UI", theme: "secondary" },
-  { skill: "Framer Motion", theme: "secondary" },
+  { skill: "Shadcn UI", variant: BadgeVariant.secondary },
+  { skill: "Chakra UI", variant: BadgeVariant.secondary },
+  { skill: "Framer Motion", variant: BadgeVariant.secondary },
 
   // DevOps & Tools
-  { skill: "Docker", theme: "ghost" },
-  { skill: "AWS", theme: "ghost" },
-  { skill: "Github", theme: "ghost" },
-  { skill: "Vercel", theme: "ghost" },
+  { skill: "Docker", variant: BadgeVariant.ghost },
+  { skill: "AWS", variant: BadgeVariant.ghost },
+  { skill: "Github", variant: BadgeVariant.ghost },
+  { skill: "Vercel", variant: BadgeVariant.ghost },
 ];
 
 export const FutureGoals = [

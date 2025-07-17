@@ -7,7 +7,7 @@ import {
 import { Code, GraduationCap, Target } from "lucide-react";
 import Link from "next/link";
 import { AnimatedSection } from "../ui/animated-section";
-import { Badge, variant } from "../ui/badge";
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
@@ -73,8 +73,8 @@ export default function LandingAboutMeSection() {
                   className="flex flex-wrap gap-2"
                   staggerDelay={50}
                 >
-                  {TechnicalSkills.map(({ skill, theme }) => (
-                    <Badge key={skill} variant={theme as keyof typeof variant}>
+                  {TechnicalSkills.map(({ skill, variant }) => (
+                    <Badge key={skill} variant={variant}>
                       {skill}
                     </Badge>
                   ))}

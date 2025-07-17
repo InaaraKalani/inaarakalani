@@ -72,7 +72,7 @@ export default function LandingProjectsSection() {
                       {project.technologies.slice(0, 4).map((technology) => (
                         <Badge
                           key={technology.name}
-                          className={`border-${technology.theme}/20 text-${technology.theme}`}
+                          variant={technology.variant}
                         >
                           {technology.name}
                         </Badge>

@@ -1,10 +1,5 @@
+import { BadgeVariant } from "@/components/ui/badge";
 import { AppWindow, Globe, Server, Shield, Zap } from "lucide-react";
-
-enum ProjectTheme {
-  primary = "primary",
-  accent = "accent",
-  neutral = "muted-foreground",
-}
 
 export enum ProjectCategory {
   frontend = "Frontend",
@@ -29,111 +24,175 @@ export const projectStatuses = [
 ];
 
 export const technologies = {
-  frontend: {
-    TypeScript: {
-      name: "TypeScript",
-      theme: ProjectTheme.primary,
-    },
-    JavaScript: {
-      name: "JavaScript",
-      theme: ProjectTheme.primary,
-    },
+  web: {
     NextJS: {
       name: "Next.js",
-      theme: ProjectTheme.primary,
+      variant: BadgeVariant.primary,
     },
     React: {
       name: "React",
-      theme: ProjectTheme.primary,
+      variant: BadgeVariant.primary,
+    },
+    JQuery: {
+      name: "JQuery",
+      variant: BadgeVariant.primary,
+    },
+    TypeScript: {
+      name: "TypeScript",
+      variant: BadgeVariant.primary,
+    },
+    JavaScript: {
+      name: "JavaScript",
+      variant: BadgeVariant.primary,
+    },
+    HTML: {
+      name: "HTML",
+      variant: BadgeVariant.primary,
+    },
+    PUG: {
+      name: "PUG",
+      variant: BadgeVariant.primary,
+    },
+    CSS: {
+      name: "CSS",
+      variant: BadgeVariant.primary,
+    },
+    SCSS: {
+      name: "SCSS",
+      variant: BadgeVariant.primary,
+    },
+    PostCSS: {
+      name: "PostCSS",
+      variant: BadgeVariant.primary,
+    },
+  },
+  programming: {
+    NodeJS: {
+      name: "Node.js",
+      variant: BadgeVariant.accent,
+    },
+    Java: {
+      name: "Java",
+      variant: BadgeVariant.accent,
+    },
+    CSharp: {
+      name: "C#",
+      variant: BadgeVariant.accent,
+    },
+    C: {
+      name: "C",
+      variant: BadgeVariant.accent,
     },
   },
   backend: {
-    NodeJS: {
-      name: "Node.js",
-      theme: ProjectTheme.accent,
-    },
     MongoDB: {
       name: "MongoDB",
-      theme: ProjectTheme.accent,
+      variant: BadgeVariant.accent,
     },
     RESTAPIs: {
       name: "REST APIs",
-      theme: ProjectTheme.accent,
+      variant: BadgeVariant.accent,
     },
     Prisma: {
       name: "Prisma",
-      theme: ProjectTheme.accent,
+      variant: BadgeVariant.accent,
     },
     GraphQL: {
       name: "GraphQL",
-      theme: ProjectTheme.accent,
+      variant: BadgeVariant.accent,
     },
     Firebase: {
       name: "Firebase",
-      theme: ProjectTheme.accent,
+      variant: BadgeVariant.accent,
     },
-  },
-  cms: {
-    Contentful: {
-      name: "Contentful",
-      theme: ProjectTheme.accent,
+    Supabase: {
+      name: "Supabase",
+      variant: BadgeVariant.accent,
     },
-    Sanity: {
-      name: "Sanity",
-      theme: ProjectTheme.accent,
+    PostgreSQL: {
+      name: "PostgreSQL",
+      variant: BadgeVariant.accent,
     },
   },
   ui: {
     ShadcnUI: {
       name: "Shadcn UI",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     ChakraUI: {
       name: "Chakra UI",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     MaterialUI: {
       name: "Material UI",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     TailwindCSS: {
       name: "Tailwind CSS",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     FramerMotion: {
       name: "Framer Motion",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     ChartJS: {
       name: "Chart.js",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
+    },
+  },
+  cms: {
+    Contentful: {
+      name: "Contentful",
+      variant: BadgeVariant.accent,
+    },
+    Sanity: {
+      name: "Sanity",
+      variant: BadgeVariant.accent,
     },
   },
   tools: {
     Swagger: {
       name: "Swagger",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     OpenAI: {
       name: "OpenAI",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
+    },
+    Stripe: {
+      name: "Stripe",
+      variant: BadgeVariant.neutral,
+    },
+    PayPal: {
+      name: "PayPal",
+      variant: BadgeVariant.neutral,
+    },
+  },
+  uiTranslations: {
+    Figma: {
+      name: "Figma",
+      variant: BadgeVariant.neutral,
+    },
+    AdobeXD: {
+      name: "Adobe XD",
+      variant: BadgeVariant.neutral,
     },
   },
   deployment: {
     Vercel: {
       name: "Vercel",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
     AWS: {
       name: "AWS",
-      theme: ProjectTheme.neutral,
+      variant: BadgeVariant.neutral,
     },
   },
 };
 
 export type Technology = {
   name: string;
-  theme: ProjectTheme;
+  variant: BadgeVariant;
 };
 
 export type ProjectType = {
@@ -170,9 +229,9 @@ export const projects: ProjectType[] = [
     year: "2025",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.MongoDB,
       technologies.backend.RESTAPIs,
       technologies.ui.ShadcnUI,
@@ -198,9 +257,9 @@ export const projects: ProjectType[] = [
     team: "2 Developers",
     technologies: [
       technologies.tools.OpenAI,
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ShadcnUI,
       technologies.ui.TailwindCSS,
@@ -223,8 +282,8 @@ export const projects: ProjectType[] = [
     year: "2025",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
       technologies.cms.Sanity,
       technologies.ui.ShadcnUI,
     ],
@@ -245,9 +304,9 @@ export const projects: ProjectType[] = [
     year: "2025",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ShadcnUI,
       technologies.ui.ChartJS,
@@ -270,9 +329,9 @@ export const projects: ProjectType[] = [
     year: "2024",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.GraphQL,
       technologies.backend.MongoDB,
       technologies.ui.ChakraUI,
@@ -294,9 +353,9 @@ export const projects: ProjectType[] = [
     year: "2023",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.MongoDB,
       technologies.ui.ChakraUI,
       technologies.ui.FramerMotion,
@@ -318,9 +377,9 @@ export const projects: ProjectType[] = [
     year: "2023",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
-      technologies.backend.NodeJS,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
       technologies.backend.MongoDB,
       technologies.backend.Prisma,
       technologies.ui.ChakraUI,
@@ -343,8 +402,8 @@ export const projects: ProjectType[] = [
     year: "2023",
     team: "2 Developers",
     technologies: [
-      technologies.frontend.NextJS,
-      technologies.frontend.TypeScript,
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
       technologies.backend.RESTAPIs,
       technologies.ui.MaterialUI,
     ],
@@ -364,8 +423,8 @@ export const projects: ProjectType[] = [
     year: "2022",
     team: "Solo Project",
     technologies: [
-      technologies.frontend.React,
-      technologies.frontend.JavaScript,
+      technologies.web.React,
+      technologies.web.JavaScript,
       technologies.backend.Firebase,
       technologies.ui.MaterialUI,
     ],

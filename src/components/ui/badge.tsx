@@ -10,6 +10,7 @@ export enum BadgeVariant {
   secondary = "secondary",
   destructive = "destructive",
   outline = "outline",
+  neutral = "neutral",
   ghost = "ghost",
   blue = "blue",
   purple = "purple",
@@ -22,6 +23,7 @@ export const variant = {
   secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-transparent",
   destructive:
     "bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+  neutral: "border text-muted-foreground border-muted-foreground/20",
   outline:
     "border text-foreground border-border [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
   ghost: "bg-transparent text-foreground [a&]:hover:bg-transparent",
