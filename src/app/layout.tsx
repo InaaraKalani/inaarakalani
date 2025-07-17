@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body cz-shortcut-listen="true">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

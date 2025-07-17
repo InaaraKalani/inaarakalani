@@ -40,10 +40,10 @@ export default function LandingAchievementsSection() {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div
-                    className={`flex size-12 items-center justify-center rounded-lg bg-${achievement.color}-500/10 hover-rotate`}
+                    className={`flex size-12 items-center justify-center rounded-lg ${achievement.color.bg} hover-rotate`}
                   >
                     <Trophy
-                      className={`size-6 text-${achievement.color}-600 dark:text-${achievement.color}-400 animate-wiggle`}
+                      className={`size-6 ${achievement.color.text} ${achievement.color.darkText} animate-wiggle`}
                     />
                   </div>
                   <div>
