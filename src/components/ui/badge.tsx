@@ -4,6 +4,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+export enum BadgeVariant {
+  primary = "primary",
+  accent = "accent",
+  secondary = "secondary",
+  destructive = "destructive",
+  outline = "outline",
+  ghost = "ghost",
+  blue = "blue",
+  purple = "purple",
+  orange = "orange",
+}
+
 export const variant = {
   primary: "bg-primary/10 text-primary [a&]:hover:bg-transparent",
   accent: "bg-accent/10 text-accent [a&]:hover:bg-transparent",

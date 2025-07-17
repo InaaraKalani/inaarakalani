@@ -1,5 +1,11 @@
-import React from "react";
+import AboutHeroSection from "@/components/about-sections/AboutHeroSection";
+import AboutSkillsSection from "@/components/about-sections/AboutSkillsSection";
 
 export default function AboutPage() {
-  return <div></div>;
+  return (
+    <main className="flex-1">
+      <AboutHeroSection />
+      <AboutSkillsSection />
+    </main>
+  );
 }
