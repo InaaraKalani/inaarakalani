@@ -103,3 +103,44 @@ export const skills = [
     ],
   },
 ];
+
+export const workExperience = [
+  {
+    title: "Software Engineer",
+    company: "Hashone Global",
+    period: "November 2022 - Present",
+    description:
+      "Leading end-to-end development of web applications using React, Next.js, and Node.js. Specialized in creating scalable solutions for startups and established businesses.",
+    achievements: [
+      "Built 15+ production applications serving thousands of users",
+      "Mentored junior developers and interns",
+      "Implemented CI/CD pipelines reducing deployment time by 60%",
+      "Led technical architecture decisions for complex projects",
+    ],
+  },
+  {
+    title: "Associate Software Engineer",
+    company: "QriosityNet",
+    period: "August 2021 - November 2022",
+    description:
+      "Started my professional journey during university, working on real-world projects and building foundational skills.",
+    achievements: [
+      "Developed QriosityNet - a gamified LinkedIn for students",
+      "Gained experience with React, Firebase, and Material UI",
+      "Learned project management and client communication",
+      "Built responsive, user-friendly interfaces",
+    ],
+    history: [
+      {
+        title: "Junior Developer",
+        company: "QriosityNet",
+        period: "April 2021 - August 2021",
+      },
+      {
+        title: "Intern",
+        company: "QriosityNet",
+        period: "April 2020 - April 2021",
+      },
+    ],
+  },
+];
