@@ -3,7 +3,7 @@
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import type { ComponentProps, ReactNode } from "react";
 
-interface AnimatedSectionProps extends ComponentProps<"section"> {
+interface AnimatedSectionProps extends ComponentProps<"div"> {
   children: ReactNode;
   className?: string;
   animation?:
@@ -40,7 +40,7 @@ export function AnimatedSection({
   };
 
   return (
-    <section
+    <div
       ref={ref}
       className={`${className} ${getAnimationClass()}`}
       style={{
@@ -50,6 +50,6 @@ export function AnimatedSection({
       {...props}
     >
       {children}
-    </section>
+    </div>
   );
 }
