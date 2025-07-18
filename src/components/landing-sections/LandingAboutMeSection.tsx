@@ -18,7 +18,7 @@ export default function LandingAboutMeSection() {
         animation="fade-up"
         className="w-full py-12 md:py-24 lg:py-32 bg-muted/30"
       >
-        <div className="container md:px-6">
+        <div className="container">
           {/* Heading */}
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">

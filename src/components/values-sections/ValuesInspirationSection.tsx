@@ -1,0 +1,71 @@
+import { inspiringWomen } from "@/data/values.data";
+import { Heart } from "lucide-react";
+import { AnimatedSection } from "../ui/animated-section";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { StaggeredList } from "../ui/staggered-list";
+import Image from "next/image";
+
+export default function ValuesInspirationSection() {
+  return (
+    <section className="w-full py-12 md:py-24">
+      <AnimatedSection className="container" animation="fade-up">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
+              Women Who Inspire Me
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Remarkable women whose stories and achievements motivate my
+              journey
+            </p>
+          </div>
+
+          <StaggeredList
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            staggerDelay={150}
+          >
+            {inspiringWomen.map((woman, index) => (
+              <Card
+                key={index}
+                className="border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0"
+              >
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={woman.image}
+                    width="500"
+                    height="300"
+                    alt={woman.name}
+                    className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                  />
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
+                      <Heart className="h-5 w-5 text-accent group-hover:animate-wiggle" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg">{woman.name}</CardTitle>
+                      <p className="text-sm text-primary font-medium">
+                        {woman.title}
+                      </p>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="-mt-2">
+                  <div className="pt-2 border-t border-border">
+                    <p className="text-xs font-medium text-accent">
+                      Impact: {woman.impact}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </StaggeredList>
+        </div>
+      </AnimatedSection>
+    </section>
+  );
+}
