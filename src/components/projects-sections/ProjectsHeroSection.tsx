@@ -1,10 +1,12 @@
 import { projectStats } from "@/data/projects.data";
 import { AnimatedSection } from "../ui/animated-section";
 import { StaggeredList } from "../ui/staggered-list";
+import { ParticleSystem } from "../ui/particle-system";
 
 export default function ProjectsHeroSection() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+      <ParticleSystem />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
       <AnimatedSection
         className="container relative z-10"
