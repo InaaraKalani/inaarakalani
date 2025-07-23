@@ -47,7 +47,7 @@ export default function LandingHeroSection() {
 
               {/* Buttons */}
               <StaggeredList
-                className="flex flex-col gap-2 min-[400px]:flex-row"
+                className="flex gap-2 flex-wrap"
                 staggerDelay={150}
               >
                 <Button asChild size="lg" variant="ghost">
