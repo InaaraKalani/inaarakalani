@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import { ParticleSystem } from "../ui/particle-system";
 import { ThemeToggle } from "../ui/theme-toggle";
 import AppLogo from "./AppLogo";
-import { navLinks } from "@/lib/app.data";
+import { heroSocialLinks, navLinks } from "@/lib/app.data";
 import { StaggeredList } from "../ui/staggered-list";
 import Link from "next/link";
 
@@ -75,7 +75,24 @@ export default function Sidebar({
           </StaggeredList>
         </nav>
 
-        <DrawerFooter></DrawerFooter>
+        {/* Social Links */}
+        <DrawerFooter className="border-t border-border">
+          <StaggeredList
+            className="flex gap-4 justify-center"
+            staggerDelay={100}
+          >
+            {heroSocialLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.url}
+                className="text-muted-foreground hover:text-primary transition-colors hover-scale"
+              >
+                <link.icon className="size-5" />
+                <span className="sr-only">{link.label}</span>
+              </Link>
+            ))}
+          </StaggeredList>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );
