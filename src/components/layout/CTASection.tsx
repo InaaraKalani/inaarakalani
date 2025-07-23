@@ -1,10 +1,7 @@
-import { contactSocialLinks, Email, LinkedIn } from "@/lib/app.data";
-import { AnimatedSection } from "../ui/animated-section";
-import { Button } from "../ui/button";
+import { contactSocialLinks } from "@/lib/app.data";
 import Link from "next/link";
+import { AnimatedSection } from "../ui/animated-section";
 import { StaggeredList } from "../ui/staggered-list";
-import { FiMail } from "react-icons/fi";
-import { FiLinkedin } from "react-icons/fi";
 
 export default function CTASection() {
   return (
@@ -21,17 +18,18 @@ export default function CTASection() {
                 Let&apos;s Work Together
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Ready to bring your ideas to life? I&apos;m always excited to
-                work on new projects and collaborate with amazing teams.
+                I&apos;m always open to exciting projects, collaborations, or
+                just meaningful conversations. Let&apos;s build something
+                amazing.
               </p>
             </div>
-            <StaggeredList
+            {/* <StaggeredList
               className="flex flex-col gap-4 min-[400px]:flex-row"
               staggerDelay={150}
             >
               <Button size="lg" asChild>
                 <Link href={Email.url}>
-                  <FiMail className="h-4 w-4 mr-2" />
+                  <FiMail className="size-4" />
                   Send Email
                 </Link>
               </Button>
@@ -42,11 +40,11 @@ export default function CTASection() {
                 className="border-primary/20 hover:bg-primary/5 bg-transparent hover-glow"
               >
                 <Link href={LinkedIn.url}>
-                  <FiLinkedin className="h-4 w-4 mr-2" />
+                  <FiLinkedin className="size-4" />
                   Connect on LinkedIn
                 </Link>
               </Button>
-            </StaggeredList>
+            </StaggeredList> */}
             <StaggeredList
               className="grid gap-6 sm:grid-cols-3 max-w-2xl pt-8"
               staggerDelay={100}

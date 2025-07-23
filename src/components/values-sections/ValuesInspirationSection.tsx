@@ -1,9 +1,8 @@
 import { inspiringWomen } from "@/data/values.data";
-import { Heart } from "lucide-react";
+import Image from "next/image";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
-import Image from "next/image";
 
 export default function ValuesInspirationSection() {
   return (
@@ -27,7 +26,7 @@ export default function ValuesInspirationSection() {
             {inspiringWomen.map((woman, index) => (
               <Card
                 key={index}
-                className="border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0"
+                className="flex flex-col border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0"
               >
                 <div className="relative overflow-hidden">
                   <Image
@@ -41,10 +40,10 @@ export default function ValuesInspirationSection() {
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
-                      <Heart className="h-5 w-5 text-accent group-hover:animate-wiggle" />
+                <CardHeader className="flex-1 pt">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
+                      <woman.icon className="h-5 w-5 text-accent group-hover:animate-wiggle" />
                     </div>
                     <div>
                       <CardTitle className="text-lg">{woman.name}</CardTitle>
@@ -54,7 +53,7 @@ export default function ValuesInspirationSection() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="-mt-2">
+                <CardContent className="-mt-3">
                   <div className="pt-2 border-t border-border">
                     <p className="text-xs font-medium text-accent">
                       Impact: {woman.impact}
