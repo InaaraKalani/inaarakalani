@@ -38,7 +38,10 @@ export default function AboutExtracurricularsSection() {
                     {activity.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <StaggeredList
+                    staggerDelay={100}
+                    className="flex flex-wrap gap-2"
+                  >
                     {activity.highlights.map((highlight, highlightIndex) => (
                       <Badge
                         key={highlightIndex}
@@ -48,7 +51,7 @@ export default function AboutExtracurricularsSection() {
                         {highlight}
                       </Badge>
                     ))}
-                  </div>
+                  </StaggeredList>
                 </CardContent>
               </Card>
             ))}

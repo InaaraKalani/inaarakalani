@@ -1,11 +1,10 @@
 "use client";
 
-import ProjectsHeroSection from "@/components/projects-sections/ProjectsHeroSection";
-import CTASection from "@/components/layout/CTASection";
 import ProjectsFilterSection from "@/components/projects-sections/ProjectsFilterSection";
-import { useState } from "react";
-import { ProjectCategory, projects, ProjectStatus } from "@/data/projects.data";
 import ProjectsGridSection from "@/components/projects-sections/ProjectsGridSection";
+import ProjectsHeroSection from "@/components/projects-sections/ProjectsHeroSection";
+import { ProjectCategory, projects, ProjectStatus } from "@/data/projects.data";
+import { useState } from "react";
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<
@@ -44,7 +43,6 @@ export default function ProjectsPage() {
         setSelectedStatus={setSelectedStatus}
         setShowFeaturedOnly={setShowFeaturedOnly}
       />
-      <CTASection />
     </main>
   );
 }

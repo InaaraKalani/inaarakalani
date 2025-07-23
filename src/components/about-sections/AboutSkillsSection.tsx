@@ -49,7 +49,10 @@ export default function AboutSkillsSection() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                  <StaggeredList
+                    staggerDelay={100}
+                    className="flex flex-wrap gap-2"
+                  >
                     {category.skills.map((skill) => (
                       <Badge
                         key={skill.name}
@@ -59,7 +62,7 @@ export default function AboutSkillsSection() {
                         {skill.name}
                       </Badge>
                     ))}
-                  </div>
+                  </StaggeredList>
                 </CardContent>
               </Card>
             ))}

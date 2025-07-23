@@ -1,9 +1,8 @@
+import AboutAcademicsSection from "@/components/about-sections/AboutAcademicsSection";
+import AboutExperienceSection from "@/components/about-sections/AboutExperienceSection";
+import AboutExtracurricularsSection from "@/components/about-sections/AboutExtracurricularsSection";
 import AboutHeroSection from "@/components/about-sections/AboutHeroSection";
 import AboutSkillsSection from "@/components/about-sections/AboutSkillsSection";
-import AboutExperienceSection from "@/components/about-sections/AboutExperienceSection";
-import AboutAcademicsSection from "@/components/about-sections/AboutAcademicsSection";
-import CTASection from "@/components/layout/CTASection";
-import AboutExtracurricularsSection from "@/components/about-sections/AboutExtracurricularsSection";
 
 export default function AboutPage() {
   return (
@@ -13,7 +12,6 @@ export default function AboutPage() {
       <AboutExperienceSection />
       <AboutAcademicsSection />
       <AboutExtracurricularsSection />
-      <CTASection />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import CTASection from "@/components/layout/CTASection";
 
 export const metadata: Metadata = {
   title: "Inaara Kalani | Portfolio",
@@ -26,6 +27,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-background to-muted/20 scrollbar-thin">
             <Header />
             <div className="flex-1">{children}</div>
+            <CTASection />
             <Footer />
           </div>
         </ThemeProvider>
