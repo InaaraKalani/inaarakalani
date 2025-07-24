@@ -1,7 +1,16 @@
 import { GiBookshelf, GiFeather, GiMicrophone } from "react-icons/gi";
 
 export const philosophy =
-  "I believe in empathy, equality, and using my voice and skills to uplift others—especially those who are unheard or undervalued. As a strong feminist, I’m deeply aware of the societal structures that suppress women and other marginalized voices, and I’m committed to challenging them wherever I can.\n\nMy love for animals, nature, and the environment is rooted in a belief that all life deserves care and respect. Whether through technology, art, or action, I hope to contribute to a more compassionate and just world—one where people are empowered, and kindness isn’t seen as a weakness, but a strength.";
+  `I believe in empathy and equality, though not in the way they are often oversimplified. ` +
+  `Equality is not about treating everyone the same, it’s about recognizing individual needs ` +
+  `and ensuring fairness. True change requires more than just words; it needs power, action, ` +
+  `and the courage to challenge systems that perpetuate imbalance.\n\nKindness is a strength, ` +
+  `but it should never come at your own expense. I believe kindness is meaningful when it  ` +
+  `serves both yourself and others, and I don’t believe it should be extended to those who ` +
+  `harm or exploit. Empathy, for me, is the ability to deeply sense and understand others, ` +
+  `but also to know where to draw boundaries to protect your own strength. \n\nMy love for ` +
+  `animals and nature reflects this philosophy. Communicating with creatures who cannot ` +
+  `speak teaches a different kind of understanding — one that is rooted in feeling rather than words.`;
 
 export const inspiringWomen = [
   {
@@ -30,19 +39,29 @@ export const inspiringWomen = [
 
 export const favoriteQuotes = [
   {
-    heading: "What does equality mean?",
+    heading: "The Meaning of Equality",
     quote:
-      "Fairness does not mean everyone gets the same. Fairness means everyone gets what they need.",
+      "Fairness does not mean everyone gets the same. Fairness means everyone gets what they need. And the only way to get what you need is to make it happen yourself.",
     author: "Rick Riordan, The Red Pyramid",
+    maxWidth: "max-w-xl",
+    timeout: 8000,
   },
-  // {
-  //   heading: "What is love?",
-  //   quote: "",
-  //   author: "",
-  // },
-  // {
-  //   heading: "What is empathy?",
-  //   quote: "",
-  //   author: "",
-  // },
+  {
+    heading: "Never Outgrow Joy",
+    quote:
+      "I never trust people who don’t laugh, who said, “I am serious” and act as if they put airplane glue on the back of their hands and stuck the glue to their foreheads. If you’re serious, you really understand that it’s important that you laugh as much as possible.",
+    author: "Dr Maya Angelou",
+    maxWidth: "max-w-2xl",
+    timeout: 8000,
+  },
+  {
+    heading: "Why The Word Feminism?",
+    quote:
+      `Feminism is, of course, part of human rights in general—but to choose to use the ` +
+      `vague expression human rights is to deny the specific and particular problem of gender.\n\nIt would be a way of pretending ` +
+      `that it was not women who have, for centuries, been excluded. It would be a way of denying that the problem of gender targets women.`,
+    author: "Chimamanda Ngozi Adichie, We Should All Be Feminists",
+    maxWidth: "max-w-4xl",
+    timeout: 12000,
+  },
 ];
