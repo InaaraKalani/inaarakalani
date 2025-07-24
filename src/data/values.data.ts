@@ -44,7 +44,6 @@ export const favoriteQuotes = [
       "Fairness does not mean everyone gets the same. Fairness means everyone gets what they need. And the only way to get what you need is to make it happen yourself.",
     author: "Rick Riordan, The Red Pyramid",
     maxWidth: "max-w-xl",
-    timeout: 8000,
   },
   {
     heading: "Never Outgrow Joy",
@@ -52,7 +51,6 @@ export const favoriteQuotes = [
       "I never trust people who don’t laugh, who said, “I am serious” and act as if they put airplane glue on the back of their hands and stuck the glue to their foreheads. If you’re serious, you really understand that it’s important that you laugh as much as possible.",
     author: "Dr Maya Angelou",
     maxWidth: "max-w-2xl",
-    timeout: 8000,
   },
   {
     heading: "Why The Word Feminism?",
@@ -62,6 +60,5 @@ export const favoriteQuotes = [
       `that it was not women who have, for centuries, been excluded. It would be a way of denying that the problem of gender targets women.`,
     author: "Chimamanda Ngozi Adichie, We Should All Be Feminists",
     maxWidth: "max-w-4xl",
-    timeout: 12000,
   },
 ];

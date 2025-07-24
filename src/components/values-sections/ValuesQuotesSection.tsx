@@ -10,15 +10,18 @@ import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 
 export default function ValuesQuotesSection() {
   const [currentIndex, setCurrentIndex] = useState(1);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Auto-play functionality
   useEffect(() => {
+    if (isHovering) return; // Don't auto-play when hovering
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % favoriteQuotes.length);
-    }, favoriteQuotes[currentIndex].timeout);
+    }, 10000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, isHovering]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -65,6 +68,8 @@ export default function ValuesQuotesSection() {
               "w-full max-w-4xl min-h-[363px]",
               "animate-in reveal duration-500"
             )}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
             <CardContent className="space-y-2 px-8">
               {/* Quote Icon */}
