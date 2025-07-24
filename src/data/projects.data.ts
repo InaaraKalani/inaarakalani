@@ -345,8 +345,8 @@ export const projects: ProjectType[] = [
     longDescription:
       "Developed with Next.js, MongoDB, Prisma, Chakra UI, and Framer Motion, the app delivers a smooth and animated shopping experience for curated canine meal plans.",
     image: "/projects/dog-lovers.png",
-    liveUrl: "https://dog-lovers.vercel.app",
-    githubUrl: "https://github.com/InaaraKalani/dog-lovers",
+    liveUrl: "https://dog-lovers-next.vercel.app",
+    githubUrl: "https://github.com/muneebhashone/dog-lovers-next",
     category: ProjectCategory.fullstack,
     status: ProjectStatus.completed,
     featured: false,
