@@ -62,3 +62,24 @@ export const favoriteQuotes = [
     maxWidth: "max-w-4xl",
   },
 ];
+
+export const books = [
+  {
+    title: "Invisible Women: Data Bias in a World Designed for Men",
+    author: "Caroline Criado Perez",
+    image: "/books/invisible-women.jpg",
+    genre: "Non-Fiction, Feminism, Science, Politics",
+  },
+  // {
+  //   title: "",
+  //   author: "",
+  //   image: "",
+  //   genre: "",
+  // },
+  // {
+  //   title: "",
+  //   author: "",
+  //   image: "",
+  //   genre: "",
+  // },
+];

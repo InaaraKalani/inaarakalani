@@ -1,5 +1,6 @@
 import ValuesHeroSection from "@/components/values-sections/ValuesHeroSection";
 import ValuesInspirationSection from "@/components/values-sections/ValuesInspirationSection";
+import ValuesBooksSection from "@/components/values-sections/ValuesBooksSection";
 import ValuesQuotesSection from "@/components/values-sections/ValuesQuotesSection";
 import { Metadata } from "next";
 
@@ -23,6 +24,7 @@ export default function ValuesPage() {
       <ValuesHeroSection />
       <ValuesInspirationSection />
       <ValuesQuotesSection />
+      <ValuesBooksSection />
     </main>
   );
 }
