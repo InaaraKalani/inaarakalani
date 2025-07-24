@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import ProjectsFilterSection from "./ProjectsFilterSection";
 import ProjectsGridSection from "./ProjectsGridSection";
