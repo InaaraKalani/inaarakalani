@@ -17,9 +17,9 @@ export const TechnicalSkills = [
   { skill: "REST API", variant: BadgeVariant.accent },
 
   // UI Frameworks
-  { skill: "Shadcn UI", variant: BadgeVariant.secondary },
-  { skill: "Chakra UI", variant: BadgeVariant.secondary },
-  { skill: "Framer Motion", variant: BadgeVariant.secondary },
+  { skill: "Shadcn UI", variant: BadgeVariant.muted },
+  { skill: "Chakra UI", variant: BadgeVariant.muted },
+  { skill: "Framer Motion", variant: BadgeVariant.muted },
 
   // DevOps & Tools
   { skill: "Docker", variant: BadgeVariant.ghost },

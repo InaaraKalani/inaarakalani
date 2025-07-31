@@ -45,7 +45,7 @@ export default function AboutExtracurricularsSection() {
                     {activity.highlights.map((highlight, highlightIndex) => (
                       <Badge
                         key={highlightIndex}
-                        variant="secondary"
+                        variant="muted"
                         className="text-xs hover-scale"
                       >
                         {highlight}

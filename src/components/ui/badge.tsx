@@ -8,9 +8,11 @@ export enum BadgeVariant {
   primary = "primary",
   accent = "accent",
   secondary = "secondary",
+  muted = "muted",
   destructive = "destructive",
-  outline = "outline",
   neutral = "neutral",
+  outline = "outline",
+  primaryOutline = "primaryOutline",
   ghost = "ghost",
   blue = "blue",
   purple = "purple",
@@ -20,12 +22,16 @@ export enum BadgeVariant {
 export const variant = {
   primary: "bg-primary/10 text-primary [a&]:hover:bg-transparent",
   accent: "bg-accent/10 text-accent [a&]:hover:bg-transparent",
-  secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-transparent",
+  secondary: "bg-secondary/10 text-secondary [a&]:hover:bg-transparent",
+  muted:
+    "bg-muted-foreground/10 text-muted-foreground [a&]:hover:bg-transparent",
   destructive:
     "bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
   neutral: "border text-muted-foreground border-muted-foreground/20",
   outline:
     "border text-foreground border-border [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+  primaryOutline:
+    "border text-primary border-primary/20 [a&]:hover:bg-primary [a&]:hover:text-primary-foreground",
   ghost: "bg-transparent text-foreground [a&]:hover:bg-transparent",
   blue: "border bg-light-blue/80 text-blue border-blue/40 backdrop-blur-sm",
   purple:

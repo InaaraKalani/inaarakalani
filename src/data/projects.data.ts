@@ -220,8 +220,8 @@ export const projects: ProjectType[] = [
       "A financial platform for managing settlements, installment sales, and fee deferrals.",
     longDescription:
       "Built with Next.js, Node.js, REST APIs, and Swagger documentation, this platform helps sellers, claimants, and attorneys efficiently calculate and manage structured settlements, installment sales, and deferred fees—all in one streamlined interface.",
-    image: "",
-    liveUrl: "",
+    image: "/projects/settlement-consultant.png",
+    liveUrl: "https://settlement-consultant.vercel.app",
     githubUrl: "https://github.com/ShakirYasin/settlement-consultant",
     category: ProjectCategory.fullstack,
     status: ProjectStatus.ongoing,
@@ -288,6 +288,32 @@ export const projects: ProjectType[] = [
       technologies.ui.ShadcnUI,
     ],
     highlights: ["CMS Integration", "Product Management"],
+  },
+  // LCM
+  {
+    title: "LCM",
+    description:
+      "A marketing website and an admin panel for a cryptocurrency investment company.",
+    longDescription:
+      "Built with Next.js and TypeScript, LCM includes a sleek marketing website for a crypto investment firm and a secure admin panel to manage users, investment plans, and platform updates. It offers a clean user experience with intuitive controls for investor and plan management.",
+    image: "/projects/lcm.png",
+    liveUrl: "https://lcm-one.vercel.app",
+    githubUrl: "https://github.com/InaaraKalani/lcm",
+    category: ProjectCategory.fullstack,
+    status: ProjectStatus.completed,
+    featured: false,
+    year: "2025",
+    team: "2 Developers",
+    technologies: [
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
+      technologies.backend.MongoDB,
+      technologies.backend.GraphQL,
+      technologies.web.TypeScript,
+      technologies.ui.ShadcnUI,
+    ],
+    highlights: ["Admin Panel for Investors", "Crypto Plan Management"],
   },
   // IDarea
   {
