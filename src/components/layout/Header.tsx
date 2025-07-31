@@ -5,12 +5,14 @@ import { StaggeredList } from "@/components/ui/staggered-list";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { navLinks } from "@/lib/app.data";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AppLogo from "./AppLogo";
 import Sidebar from "./Sidebar";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -36,7 +38,10 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.url}
-                className="hidden sm:block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover-text-glow"
+                className={cn(
+                  "hidden sm:block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
+                  pathname === link.url && "!text-primary"
+                )}
               >
                 {link.name}
               </Link>
