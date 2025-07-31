@@ -58,8 +58,8 @@ function Carousel({
     },
     plugins
   );
-  const [canScrollPrev, setCanScrollPrev] = React.useState(true);
-  const [canScrollNext, setCanScrollNext] = React.useState(true);
+  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
+  const [canScrollNext, setCanScrollNext] = React.useState(false);
 
   const onSelect = React.useCallback((api: CarouselApi) => {
     if (!api) return;
@@ -262,7 +262,7 @@ function CarouselDots({
 
   return (
     <div
-      className={cn("flex justify-center items-center gap-2 mt-6", className)}
+      className={cn("flex justify-center items-center gap-2 mt-2", className)}
       {...props}
     >
       {Array.from({ length: slides }).map((_, index) => (

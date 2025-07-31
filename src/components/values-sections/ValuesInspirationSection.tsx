@@ -28,7 +28,10 @@ export default function ValuesInspirationSection() {
             </p>
           </div>
 
-          <Carousel plugins={[Autoplay({ delay: 2000 })]} opts={{ loop: true }}>
+          <Carousel
+            plugins={[Autoplay({ delay: 2000 })]}
+            opts={{ align: "start", loop: true }}
+          >
             <CarouselContent className="-ml-6">
               {inspiringWomen.map((woman, index) => (
                 <CarouselItem
