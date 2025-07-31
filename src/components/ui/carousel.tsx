@@ -231,6 +231,57 @@ function CarouselNext({
   );
 }
 
+function CarouselDots({
+  className,
+  slides,
+  ...props
+}: React.ComponentProps<"div"> & { slides: number }) {
+  const { api } = useCarousel();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  // Update selected index on select
+  React.useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    // Set initial
+    onSelect();
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  const onClick = (index: number) => {
+    api?.scrollTo(index);
+  };
+
+  return (
+    <div
+      className={cn("flex justify-center items-center gap-2 mt-6", className)}
+      {...props}
+    >
+      {Array.from({ length: slides }).map((_, index) => (
+        <button
+          key={index}
+          className={cn(
+            "size-2 rounded-full transition-all duration-300 hover:scale-125 cursor-pointer",
+            index === selectedIndex
+              ? "bg-primary/80 shadow-lg scale-125"
+              : "bg-muted-foreground/30 hover:bg-accent/50"
+          )}
+          onClick={() => onClick(index)}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+}
+
 export {
   type CarouselApi,
   Carousel,
@@ -238,4 +289,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 };
