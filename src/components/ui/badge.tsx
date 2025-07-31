@@ -33,11 +33,9 @@ export const variant = {
   primaryOutline:
     "border text-primary border-primary/20 [a&]:hover:bg-primary [a&]:hover:text-primary-foreground",
   ghost: "bg-transparent text-foreground [a&]:hover:bg-transparent",
-  blue: "border bg-light-blue/80 text-blue border-blue/40 backdrop-blur-sm",
-  purple:
-    "border bg-light-purple/80 text-purple border-purple/40 backdrop-blur-sm",
-  orange:
-    "border bg-light-orange/80 text-orange border-orange/40 backdrop-blur-sm",
+  blue: "border bg-blue/10 text-blue border-blue/40 backdrop-blur-md",
+  purple: "border bg-purple/10 text-purple border-purple/40 backdrop-blur-md",
+  orange: "border bg-orange/10 text-orange border-orange/40 backdrop-blur-md",
 };
 
 const badgeVariants = cva(

@@ -139,12 +139,14 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
       {/* Action Buttons */}
       <CardFooter className="gap-2">
         {/* Live Demo Button */}
-        <Button variant="ghost" asChild className="flex-1">
-          <Link href={project.liveUrl} target="_blank">
-            <ExternalLink className="size-4" />
-            Live Demo
-          </Link>
-        </Button>
+        {project.liveUrl && (
+          <Button variant="ghost" asChild className="flex-1">
+            <Link href={project.liveUrl} target="_blank">
+              <ExternalLink className="size-4" />
+              Live Demo
+            </Link>
+          </Button>
+        )}
 
         {/* Github / GitLab Button */}
         {(project.githubUrl || project.gitlabUrl) && (

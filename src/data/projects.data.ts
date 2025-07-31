@@ -33,6 +33,10 @@ export const technologies = {
       name: "React",
       variant: BadgeVariant.primary,
     },
+    Angular: {
+      name: "Angular",
+      variant: BadgeVariant.primary,
+    },
     JQuery: {
       name: "JQuery",
       variant: BadgeVariant.primary,
@@ -111,6 +115,10 @@ export const technologies = {
     },
     PostgreSQL: {
       name: "PostgreSQL",
+      variant: BadgeVariant.accent,
+    },
+    AWS_S3_Bucket: {
+      name: "AWS S3 Bucket",
       variant: BadgeVariant.accent,
     },
   },
@@ -364,6 +372,79 @@ export const projects: ProjectType[] = [
     ],
     highlights: ["Social Media Platform", "Full Customization"],
   },
+  // Champion League Baseball
+  {
+    title: "Champion League Baseball",
+    description:
+      "A web app for baseball coaches to manage teams, schedule matches, and track results throughout the season.",
+    longDescription:
+      "Champion League Baseball is a web application built with Next.js, Node.js, and GraphQL, enabling team coaches to register teams, schedule matches, and manage game data. Coaches can view available time slots via an interactive calendar, send match requests, track results, and monitor seasonal leaderboards.",
+    image: "/projects/cbl.png",
+    liveUrl: "https://cbl-web.vercel.app",
+    githubUrl: "https://github.com/usama-hashone-hub/cbl-web",
+    category: ProjectCategory.fullstack,
+    status: ProjectStatus.completed,
+    featured: false,
+    year: "2024",
+    team: "3 Developers",
+    technologies: [
+      technologies.web.NextJS,
+      technologies.web.TypeScript,
+      technologies.programming.NodeJS,
+      technologies.backend.MongoDB,
+      technologies.backend.GraphQL,
+      technologies.ui.ShadcnUI,
+    ],
+    highlights: [
+      "Interactive Calendar Scheduling",
+      "Match Results & Leaderboard",
+    ],
+  },
+  // 360 Image Splitter
+  {
+    title: "360 Image Splitter",
+    description:
+      "An image processing tool to split car images into five predefined sections for analysis or download.",
+    longDescription:
+      "Image-Split is a lightweight image processing tool built with Node.js. It lets users upload car images, automatically splits them into five defined sections, and enables easy download of the output files.",
+    image: "/projects/image-extractor.png",
+    liveUrl: "https://image-uploader-psi-sandy.vercel.app",
+    githubUrl: "https://github.com/InaaraKalani/image-split",
+    category: ProjectCategory.backend,
+    status: ProjectStatus.completed,
+    featured: false,
+    year: "2024",
+    team: "Solo Project",
+    technologies: [
+      technologies.web.NextJS,
+      technologies.programming.NodeJS,
+      technologies.backend.RESTAPIs,
+      technologies.backend.AWS_S3_Bucket,
+    ],
+    highlights: ["Car Image Splitting", "Automated Image Segmentation"],
+  },
+  // Talky Walky
+  {
+    title: "Talky Walky",
+    description:
+      "An educational chatbot app designed to help users improve English skills through conversation and voice playback.",
+    longDescription:
+      "Talky Walky is a chatbot app built with Angular and Material UI, designed to make English learning accessible for undereducated users. It supports both text-to-speech and speech-to-text for voice-based interaction, along with language translation features and mini-games to make learning engaging and inclusive.",
+    image: "/projects/talky-walky.png",
+    liveUrl: "https://www-h2-devx.talky-walky.ch",
+    githubUrl: "https://github.com/mbachmann/chat-app-frontend",
+    category: ProjectCategory.frontend,
+    status: ProjectStatus.completed,
+    featured: false,
+    year: "2024",
+    team: "Solo Project",
+    technologies: [
+      technologies.web.Angular,
+      technologies.web.TypeScript,
+      technologies.ui.MaterialUI,
+    ],
+    highlights: ["Voice Interaction", "Multilingual Support"],
+  },
   // Dog Lovers
   {
     title: "Dog Lovers",
@@ -412,6 +493,31 @@ export const projects: ProjectType[] = [
       technologies.cms.Contentful,
     ],
     highlights: ["Service Booking System", "CMS Integration"],
+  },
+  // SnappyDate
+  {
+    title: "SnappyDate",
+    description:
+      "A dating app where users can connect, chat, plan dates, and send gifts—all in one place.",
+    longDescription:
+      "SnappyDate is a full-stack dating application built with Next.js, Node.js, and MongoDB. It allows users to find matches, chat in real time, schedule dates, book restaurants, and purchase thoughtful gifts for their connections—streamlining the dating experience from first message to final surprise.",
+    image: "/projects/snappydate.png",
+    liveUrl: "",
+    githubUrl: "https://github.com/muneebhashone/snappy-date-next",
+    category: ProjectCategory.fullstack,
+    status: ProjectStatus.completed,
+    featured: false,
+    year: "2023",
+    team: "2 Developers",
+    technologies: [
+      technologies.web.NextJS,
+      technologies.web.JavaScript,
+      technologies.programming.NodeJS,
+      technologies.backend.MongoDB,
+      technologies.backend.RESTAPIs,
+      technologies.ui.ChakraUI,
+    ],
+    highlights: ["Date Booking & Gifting", "Real-Time Chat"],
   },
   // Inspiria
   {
