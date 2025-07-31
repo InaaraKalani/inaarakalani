@@ -1,14 +1,23 @@
+"use client";
+
 import { inspiringWomen } from "@/data/values.data";
 import Image from "next/image";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { StaggeredList } from "../ui/staggered-list";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function ValuesInspirationSection() {
   return (
     <section className="w-full py-12 md:py-24">
       <AnimatedSection className="container" animation="fade-up">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
               Women Who Inspire Me
@@ -19,50 +28,60 @@ export default function ValuesInspirationSection() {
             </p>
           </div>
 
-          <StaggeredList
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-            staggerDelay={150}
-          >
-            {inspiringWomen.map((woman, index) => (
-              <Card
-                key={index}
-                className="flex flex-col border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0"
-              >
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={woman.image}
-                    width="500"
-                    height="300"
-                    alt={woman.name}
-                    className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
-                  />
+          <Carousel plugins={[Autoplay({ delay: 2000 })]} opts={{ loop: true }}>
+            <CarouselContent className="-ml-6">
+              {inspiringWomen.map((woman, index) => (
+                <CarouselItem
+                  className="md:basis-1/2 lg:basis-1/3 pl-6"
+                  key={index}
+                >
+                  <Card className="flex flex-col border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0">
+                    {/* Image */}
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={woman.image}
+                        width="500"
+                        height="300"
+                        alt={woman.name}
+                        className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                      />
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <CardHeader className="flex-1 pt">
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
-                      <woman.icon className="h-5 w-5 text-accent group-hover:animate-wiggle" />
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg">{woman.name}</CardTitle>
-                      <p className="text-sm text-primary font-medium">
-                        {woman.title}
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="-mt-3">
-                  <div className="pt-2 border-t border-border">
-                    <p className="text-xs font-medium text-accent">
-                      Impact: {woman.impact}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </StaggeredList>
+
+                    {/* Name and Title */}
+                    <CardHeader className="flex-1 pt">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
+                          <woman.icon className="h-5 w-5 text-accent group-hover:animate-wiggle" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-lg">
+                            {woman.name}
+                          </CardTitle>
+                          <p className="text-sm text-primary font-medium">
+                            {woman.title}
+                          </p>
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    {/* Impact */}
+                    <CardContent className="-mt-3">
+                      <div className="pt-2 border-t border-border">
+                        <p className="text-xs font-medium text-accent">
+                          Impact: {woman.impact}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </AnimatedSection>
     </section>

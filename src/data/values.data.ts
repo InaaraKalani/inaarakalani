@@ -1,4 +1,5 @@
-import { GiBookshelf, GiFeather, GiMicrophone } from "react-icons/gi";
+import { BookOpenText, MicVocal, Rocket } from "lucide-react";
+import { GiFeather } from "react-icons/gi";
 
 export const philosophy =
   `I believe in empathy and equality, though not in the way they are often oversimplified. ` +
@@ -18,7 +19,7 @@ export const inspiringWomen = [
     title: "Singer-Songwriter",
     image: "/inspirations/taylor-swift.jpeg",
     impact: "Voice, Fortitude, and Bravery",
-    icon: GiMicrophone,
+    icon: MicVocal,
   },
   {
     name: "Dr Maya Angelou",
@@ -33,7 +34,14 @@ export const inspiringWomen = [
     title: "Writer, Poet, Feminist",
     image: "/inspirations/chimamanda-ngozi-adichie.jpg",
     impact: "Truth, Courage, and Empathy",
-    icon: GiBookshelf,
+    icon: BookOpenText,
+  },
+  {
+    name: "Margaret Hamilton",
+    title: "Software Engineer",
+    image: "/inspirations/margret-hamilton.jpg",
+    impact: "Resilience, Creativity, and Innovation",
+    icon: Rocket,
   },
 ];
 
@@ -70,16 +78,16 @@ export const books = [
     image: "/books/invisible-women.jpg",
     genre: "Non-Fiction, Feminism, Science, Politics",
   },
-  // {
-  //   title: "",
-  //   author: "",
-  //   image: "",
-  //   genre: "",
-  // },
-  // {
-  //   title: "",
-  //   author: "",
-  //   image: "",
-  //   genre: "",
-  // },
+  {
+    title: "Percy Jackson & the Olympians",
+    author: "Rick Riordan",
+    image: "/books/percy-jackson-and-the-olympians.jpg",
+    genre: "Greek Mythology, Fantasy, Coming of Age",
+  },
+  {
+    title: "The Kane Chronicles",
+    author: "Rick Riordan",
+    image: "/books/the-kane-chronicles.jpg",
+    genre: "Egyptian Mythology, Fantasy, Adventure",
+  },
 ];
