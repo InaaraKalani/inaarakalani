@@ -1,0 +1,16 @@
+export const poetryHeroTexts = [
+  "The curse of my writing has always been",
+  "People thinking I'm writing about them,",
+  "for them, to them",
+  "I'm not.",
+  "I just wrote what I felt at a moment",
+  "at my highest, lowest and in between",
+  "and I share them",
+  "because I like the attention",
+  "And if it's really good,",
+  "then I like for people to relate to me.",
+  "My writings are my thoughts, my journey",
+  "and my emotions.",
+  "So, get over yourself",
+  "It's not about you ☺️",
+];

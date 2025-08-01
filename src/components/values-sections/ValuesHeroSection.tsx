@@ -11,11 +11,11 @@ export default function ValuesHeroSection() {
 
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
       <div className="container relative z-10">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Content */}
           <AnimatedSection
             animation="fade-right"
-            className="space-y-2"
+            className="basis-2/3 space-y-2"
             duration={1}
             delay={200}
           >
@@ -29,7 +29,7 @@ export default function ValuesHeroSection() {
             </h2>
 
             {/* Introduction */}
-            <p className="max-w-[840px] text-muted-foreground md:text-lg leading-relaxed whitespace-pre-line">
+            <p className="text-muted-foreground md:text-lg leading-relaxed whitespace-pre-line">
               {philosophy}
             </p>
           </AnimatedSection>
@@ -37,7 +37,7 @@ export default function ValuesHeroSection() {
           {/* Image */}
           <AnimatedSection
             animation="fade-left"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center basis-1/3"
             duration={1}
             delay={400}
           >

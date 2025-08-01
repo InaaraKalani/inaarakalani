@@ -38,4 +38,5 @@ export const navLinks = [
   { name: "About", url: "/about" },
   { name: "Projects", url: "/projects" },
   { name: "Values", url: "/values" },
+  { name: "Poetry", url: "/poetry" },
 ];
