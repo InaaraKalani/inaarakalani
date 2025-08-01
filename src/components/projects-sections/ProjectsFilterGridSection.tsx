@@ -3,7 +3,12 @@
 import { useState } from "react";
 import ProjectsFilterSection from "./ProjectsFilterSection";
 import ProjectsGridSection from "./ProjectsGridSection";
-import { ProjectCategory, projects, ProjectStatus } from "@/data/projects.data";
+import {
+  ProjectCategory,
+  projects,
+  ProjectStatus,
+  ProjectType,
+} from "@/data/projects.data";
 
 export default function ProjectsFilterGridSection() {
   const [selectedCategory, setSelectedCategory] = useState<
@@ -13,25 +18,25 @@ export default function ProjectsFilterGridSection() {
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const searchByTechnologies = projects.filter((project) =>
-    project.technologies.some((technology) =>
+  const searchByTechnologies = (project: ProjectType) => {
+    return project.technologies.some((technology) =>
       technology.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+    );
+  };
 
-  const searchByHighlights = projects.filter((project) =>
-    project.highlights.some((highlight) =>
+  const searchByHighlights = (project: ProjectType) => {
+    return project.highlights.some((highlight) =>
       highlight.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+    );
+  };
 
   const filteredProjects = projects.filter((project) => {
     return (
       // Search by title, description, technologies, highlights
       (project.title.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by title
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by description
-        searchByTechnologies.length > 0 || // Search by technologies
-        searchByHighlights.length > 0) && // Search by highlights
+        searchByTechnologies(project) || // Search by technologies
+        searchByHighlights(project)) && // Search by highlights
       // Filter by category
       (selectedCategory === "" || project.category === selectedCategory) &&
       // Filter by status
