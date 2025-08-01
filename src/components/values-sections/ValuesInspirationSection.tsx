@@ -12,13 +12,16 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 export default function ValuesInspirationSection() {
+  const autoplay = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
+
   return (
     <section className="w-full py-12 md:py-24">
       <AnimatedSection className="container" animation="fade-up">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
               Women Who Inspire Me
             </h2>
@@ -29,13 +32,15 @@ export default function ValuesInspirationSection() {
           </div>
 
           <Carousel
-            plugins={[Autoplay({ delay: 2000 })]}
+            plugins={[autoplay.current]}
             opts={{ align: "start", loop: true }}
+            onMouseEnter={() => autoplay.current.stop()}
+            onMouseLeave={() => autoplay.current.play()}
           >
             <CarouselContent className="-ml-6">
-              {inspiringWomen.map((woman, index) => (
+              {[...inspiringWomen, ...inspiringWomen].map((woman, index) => (
                 <CarouselItem
-                  className="md:basis-1/2 lg:basis-1/3 pl-6"
+                  className="md:basis-1/2 lg:basis-1/3 pl-6 pt-12"
                   key={index}
                 >
                   <Card className="flex flex-col border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full overflow-hidden group pt-0">

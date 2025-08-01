@@ -14,12 +14,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import { useRef } from "react";
 
 export default function ValuesQuotesSection() {
+  const autoplay = useRef(Autoplay({ delay: 10000, stopOnInteraction: false }));
+
   return (
     <section className="w-full py-12 md:py-24 bg-muted/30">
       <AnimatedSection className="container" animation="slide-up">
-        <div className="text-center mb-12">
+        <div className="text-center mb-4">
           <h2 className="text-3xl font-bold leading-normal tracking-tighter sm:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
             Words That Shaped My Ideals
           </h2>
@@ -31,14 +34,17 @@ export default function ValuesQuotesSection() {
 
         <Carousel
           className="w-full max-w-4xl mx-auto"
-          plugins={[Autoplay({ delay: 10000 })]}
+          plugins={[autoplay.current]}
+          opts={{ loop: true }}
+          onMouseEnter={() => autoplay.current.stop()}
+          onMouseLeave={() => autoplay.current.play()}
         >
           <CarouselContent>
             {favoriteQuotes.map((quote, index) => (
               <CarouselItem className="p-4 pl-8" key={index}>
                 <Card
                   className={cn(
-                    "border-primary/10 hover:border-primary/20 transition-all ease-in-out hover-lift",
+                    "border-primary/10 hover:border-primary/20 transition-all ease-in-out",
                     "flex flex-col items-center justify-center text-center",
                     "min-h-[363px]"
                   )}
