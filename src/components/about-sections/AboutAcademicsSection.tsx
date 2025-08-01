@@ -18,7 +18,7 @@ export default function AboutAcademicsSection() {
             </p>
           </div>
 
-          <StaggeredList className="space-y-8" staggerDelay={200}>
+          <StaggeredList className="space-y-6" staggerDelay={200}>
             {academicBackground.map((e, i) => (
               <Card
                 key={i}

@@ -13,7 +13,7 @@ import { StaggeredList } from "../ui/staggered-list";
 
 export default function LandingAboutMeSection() {
   return (
-    <section>
+    <section id="about">
       <AnimatedSection
         animation="fade-up"
         className="w-full py-12 md:py-24 lg:py-32 bg-muted/30"
@@ -33,7 +33,7 @@ export default function LandingAboutMeSection() {
 
           {/* Academic Background, Technical Skills, Future Goals */}
           <StaggeredList
-            className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12"
+            className="mx-auto grid max-w-5xl items-center gap-6 py-8 lg:grid-cols-3 lg:gap-12"
             staggerDelay={200}
           >
             {/* Academic Background */}

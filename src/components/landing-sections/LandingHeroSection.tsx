@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
 import { MorphingText } from "@/components/ui/morphing-text";
@@ -10,6 +12,11 @@ import Link from "next/link";
 import ProfileImageHalf from "../profile-images/ProfileImageHalf";
 
 export default function LandingHeroSection() {
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
       <ParticleSystem />
@@ -50,12 +57,20 @@ export default function LandingHeroSection() {
                 className="flex gap-2 flex-wrap"
                 staggerDelay={150}
               >
-                <Button asChild size="lg" variant="ghost">
-                  <Link href="#projects">View My Work</Link>
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  onClick={() => scrollTo("projects")}
+                >
+                  View My Work
                 </Button>
 
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="#contact">Get In Touch</Link>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => scrollTo("about")}
+                >
+                  Get In Touch
                 </Button>
               </StaggeredList>
 

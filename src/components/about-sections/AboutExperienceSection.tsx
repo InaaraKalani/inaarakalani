@@ -24,7 +24,7 @@ export default function AboutExperienceSection() {
             </p>
           </div>
 
-          <StaggeredList className="space-y-8" staggerDelay={200}>
+          <StaggeredList className="space-y-6" staggerDelay={200}>
             {workExperience.map((experience, index) => (
               <Card
                 key={index}
