@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface StackingTextProps {
@@ -27,9 +27,11 @@ export function StackingText({
   maxVisibleLines = 3,
   className,
 }: StackingTextProps) {
+  const lineRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const [lines, setLines] = useState<TextLine[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [resetting, setResetting] = useState(false);
+  const [hiddenHeight, setHiddenHeight] = useState(0);
 
   const allComplete =
     texts.length > 0 &&
@@ -38,27 +40,38 @@ export function StackingText({
 
   // Add new lines
   useEffect(() => {
-    if (texts.length === 0 || resetting) return;
-    if (lines.length === texts.length) return;
+    if (texts.length === 0 || resetting || lines.length === texts.length)
+      return;
 
     const timer = setTimeout(
       () => {
-        setLines((prev) => [
-          ...prev,
-          {
-            id: Date.now(),
-            text: texts[currentIndex],
-            currentText: "",
-            isComplete: false,
-          },
-        ]);
+        const newLine: TextLine = {
+          id: Date.now(),
+          text: texts[currentIndex],
+          currentText: "",
+          isComplete: false,
+        };
+        setLines((prev) => [...prev, newLine]);
         setCurrentIndex((i) => (i + 1) % texts.length);
       },
       lines.length === 0 ? 0 : linePauseDuration
     );
 
     return () => clearTimeout(timer);
-  }, [lines, texts, currentIndex, linePauseDuration, resetting]);
+  }, [texts, lines, currentIndex, resetting, linePauseDuration]);
+
+  // Measure height of hidden lines
+  useEffect(() => {
+    const visibleStart = Math.max(0, lines.length - maxVisibleLines);
+    let total = 0;
+
+    for (let i = 0; i < visibleStart; i++) {
+      const el = lineRefs.current.get(lines[i].id);
+      if (el) total += el.offsetHeight;
+    }
+
+    setHiddenHeight(total);
+  }, [lines, maxVisibleLines]);
 
   // Typing animation
   useEffect(() => {
@@ -86,18 +99,15 @@ export function StackingText({
     return () => clearTimeout(timer);
   }, [lines, typingSpeed, resetting]);
 
-  // Trigger fade-out of all after complete
+  // Trigger fade-out after all complete
   useEffect(() => {
     if (!allComplete) return;
 
-    const timer = setTimeout(() => {
-      setResetting(true);
-    }, resetDelay);
-
+    const timer = setTimeout(() => setResetting(true), resetDelay);
     return () => clearTimeout(timer);
   }, [allComplete, resetDelay]);
 
-  // Reset all after fade
+  // Reset after fade-out
   useEffect(() => {
     if (!resetting) return;
 
@@ -109,25 +119,22 @@ export function StackingText({
 
     return () => clearTimeout(timer);
   }, [resetting, resetDelay]);
-
-  // Shift container upward visually
-  const visibleOffset = Math.max(0, lines.length - maxVisibleLines);
   const lineHeightRem = 2.25;
 
   return (
     <div
-      className={cn(`relative overflow-hidden`, className)}
-      style={{ minHeight: `${lineHeightRem * maxVisibleLines}rem` }}
+      className={cn("relative overflow-hidden", className)}
+      style={{ minHeight: `${lineHeightRem * maxVisibleLines * 2}rem` }}
     >
       <div
         className={cn(
-          "transition-opacity duration-500 ease-in-out transform-gpu",
+          "transition-opacity transform-gpu duration-500 ease-in-out",
           resetting && "opacity-0"
         )}
         style={{
-          transform: `translateY(-${visibleOffset * lineHeightRem}rem)`,
+          transform: `translateY(-${hiddenHeight}px)`,
+          marginBottom: `-${hiddenHeight}px`,
           transition: "transform 0.6s ease-in-out, opacity 0.5s ease-in-out",
-          marginBottom: `-${visibleOffset * lineHeightRem}rem`,
         }}
       >
         {lines.map((line, index) => {
@@ -137,16 +144,19 @@ export function StackingText({
           return (
             <div
               key={line.id}
+              ref={(el) => {
+                if (el) lineRefs.current.set(line.id, el);
+                else lineRefs.current.delete(line.id); // Clean up on unmount
+              }}
               className={cn(
                 "transition-opacity duration-500",
-                isHidden ? "opacity-0" : "opacity-100",
-                "h-[2.25rem]"
+                isHidden ? "opacity-0" : "opacity-100"
               )}
             >
-              <span className="inline-flex items-center">
+              <span className="inline break-words">
                 {line.currentText}
                 {isTyping && (
-                  <span className="ml-1 w-0.5 h-5 bg-current animate-pulse" />
+                  <span className="animate-pulse select-none">|</span>
                 )}
               </span>
             </div>
