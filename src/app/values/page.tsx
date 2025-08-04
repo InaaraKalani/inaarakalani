@@ -2,6 +2,7 @@ import ValuesHeroSection from "@/components/values-sections/ValuesHeroSection";
 import ValuesInspirationSection from "@/components/values-sections/ValuesInspirationSection";
 import ValuesBooksSection from "@/components/values-sections/ValuesBooksSection";
 import ValuesQuotesSection from "@/components/values-sections/ValuesQuotesSection";
+import CTASection from "@/components/layout/CTASection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function ValuesPage() {
       <ValuesInspirationSection />
       <ValuesQuotesSection />
       <ValuesBooksSection />
+      <CTASection />
     </main>
   );
 }

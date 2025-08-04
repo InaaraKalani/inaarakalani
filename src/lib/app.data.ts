@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 
 export const landingHeroTexts = [
   "Full-Stack Web Developer",
@@ -30,7 +30,14 @@ export const Email = {
   icon: FiMail,
 };
 
-export const heroSocialLinks = [GitHub, LinkedIn, Email];
+export const Instagram = {
+  label: "Instagram",
+  name: "@beyondrita",
+  url: "https://www.instagram.com/beyondrita",
+  icon: FiInstagram,
+};
+
+export const heroSocialLinks = [GitHub, LinkedIn, Email, Instagram];
 
 export const contactSocialLinks = [Email, GitHub, LinkedIn];
 

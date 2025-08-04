@@ -1,5 +1,6 @@
 import ProjectsFilterGridSection from "@/components/projects-sections/ProjectsFilterGridSection";
 import ProjectsHeroSection from "@/components/projects-sections/ProjectsHeroSection";
+import CTASection from "@/components/layout/CTASection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function ProjectsPage() {
     <main className="flex-1">
       <ProjectsHeroSection />
       <ProjectsFilterGridSection />
+      <CTASection />
     </main>
   );
 }

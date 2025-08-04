@@ -82,12 +82,19 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Calendar className="h-3 w-3" />
                 {piece.year}
+
+                {/* Type Badge */}
+                <span className="sm:hidden">
+                  <span className="mr-2">•</span>
+                  {piece.type === PoetryType.Poetry ? "Poetry" : "Song Lyrics"}
+                </span>
               </div>
             </div>
           </div>
 
           {/* Type Badge */}
           <Badge
+            className="hidden sm:flex"
             variant={piece.type === PoetryType.Poetry ? "primary" : "accent"}
           >
             {piece.type === PoetryType.Poetry ? "Poetry" : "Song Lyrics"}

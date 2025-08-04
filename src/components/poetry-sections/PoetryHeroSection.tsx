@@ -17,7 +17,7 @@ const PenToolIcon = () => {
 
 export default function PoetryHeroSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 min-h-[calc(100vh-72px)] flex items-center justify-center relative overflow-hidden">
+    <section className="w-full py-12 md:py-24 lg:py-32 flex items-center justify-center relative overflow-hidden">
       <ParticleSystem />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
       <AnimatedSection
@@ -25,7 +25,7 @@ export default function PoetryHeroSection() {
         animation="fade-up"
         duration={1}
       >
-        <div className="flex flex-col items-center justify-center space-y-2 text-center mb-10">
+        <div className="flex flex-col items-center justify-center space-y-2 text-center">
           <PenToolIcon />
           <h1 className="text-3xl font-bold leading-normal tracking-tighter sm:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift">
             Poetry & Words

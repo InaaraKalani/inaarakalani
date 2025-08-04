@@ -3,6 +3,7 @@ import AboutExperienceSection from "@/components/about-sections/AboutExperienceS
 import AboutExtracurricularsSection from "@/components/about-sections/AboutExtracurricularsSection";
 import AboutHeroSection from "@/components/about-sections/AboutHeroSection";
 import AboutSkillsSection from "@/components/about-sections/AboutSkillsSection";
+import CTASection from "@/components/layout/CTASection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function AboutPage() {
       <AboutExperienceSection />
       <AboutAcademicsSection />
       <AboutExtracurricularsSection />
+      <CTASection />
     </main>
   );
 }
