@@ -13,9 +13,9 @@ export const skillSchemaType = defineType({
       validation: required,
       options: {
         list: [
-          { title: "Frontend", value: "frontend" },
-          { title: "Backend", value: "backend" },
-          { title: "Other Tools", value: "other-tools" },
+          { title: "Frontend", value: "Frontend" },
+          { title: "Backend", value: "Backend" },
+          { title: "Other Tools", value: "Other Tools" },
         ],
       },
     },

@@ -7,7 +7,7 @@ import { inspirationSchemaType } from "./InspirationSchemaType";
 import { skillSchemaType } from "./skillSchemaType";
 import { experienceSchemaType } from "./experienceSchemaType";
 import { educationSchemaType } from "./educationSchemaType";
-import { extracurricularSchemaType } from "./extracurricularSchemaType";
+import { extracurricularsSchemaType } from "./extracurricularsSchemaType";
 import { philosophySchemaType } from "./philosophySchemaType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -19,7 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     skillSchemaType,
     experienceSchemaType,
     educationSchemaType,
-    extracurricularSchemaType,
+    extracurricularsSchemaType,
 
     // Values
     philosophySchemaType,

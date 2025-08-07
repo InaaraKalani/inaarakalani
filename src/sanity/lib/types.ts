@@ -117,9 +117,9 @@ export type Philosophy = {
   };
 };
 
-export type Extracurricular = {
+export type Extracurriculars = {
   _id: string;
-  _type: "extracurricular";
+  _type: "extracurriculars";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -167,7 +167,7 @@ export type Skills = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: "frontend" | "backend" | "other-tools";
+  title?: "Frontend" | "Backend" | "Other Tools";
   description?: string;
   skills?: Array<{
     name?: {
@@ -348,8 +348,52 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Extracurricular | Education | Experiences | Skills | Technologies | Projects | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Extracurriculars | Education | Experiences | Skills | Technologies | Projects | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: src/sanity/queries/about.queries.ts
+// Variable: skillsQuery
+// Query: *    [_type == "skills"] | order(_createdAt asc) {        title,        description,        skills[] {'name': name->name, variant}    }
+export type SkillsQueryResult = Array<{
+  title: "Backend" | "Frontend" | "Other Tools" | null;
+  description: string | null;
+  skills: Array<{
+    name: string | null;
+    variant: "accent" | "ghost" | "primary" | null;
+  }> | null;
+}>;
+// Variable: experiencesQuery
+// Query: *    [_type=="experiences"]|order(_createdAt desc)    {title, company, period, description, achievements, history}
+export type ExperiencesQueryResult = Array<{
+  title: string | null;
+  company: string | null;
+  period: string | null;
+  description: string | null;
+  achievements: Array<string> | null;
+  history: Array<{
+    title?: string;
+    company?: string;
+    period?: string;
+    _key: string;
+  }> | null;
+}>;
+// Variable: educationQuery
+// Query: *    [_type=="education"]|order(_createdAt desc)    {title, description, institution, period, achievements}
+export type EducationQueryResult = Array<{
+  title: string | null;
+  description: string | null;
+  institution: string | null;
+  period: string | null;
+  achievements: Array<string> | null;
+}>;
+// Variable: extracurricularsQuery
+// Query: *    [_type=="extracurriculars"]|order(_createdAt asc)    {title, description, icon, highlights}
+export type ExtracurricularsQueryResult = Array<{
+  title: string | null;
+  description: string | null;
+  icon: string | null;
+  highlights: Array<string> | null;
+}>;
+
 // Source: src/sanity/queries/values.queries.ts
 // Variable: philosophyQuery
 // Query: *    [_type=="philosophy"][0]    {title, philosophy, imageLight, imageDark}
@@ -382,7 +426,7 @@ export type PhilosophyQueryResult = {
   } | null;
 } | null;
 // Variable: inspirationsQuery
-// Query: *    [_type=="inspirations"]|order(date asc)    {name, title, image, impact}
+// Query: *    [_type=="inspirations"]|order(_createdAt asc)    {name, title, image, impact}
 export type InspirationsQueryResult = Array<{
   name: string | null;
   title: string | null;
@@ -401,7 +445,7 @@ export type InspirationsQueryResult = Array<{
   impact: string | null;
 }>;
 // Variable: quotesQuery
-// Query: *    [_type=="quotes"]|order(date asc)    {heading, quote, author, maxwidth}
+// Query: *    [_type=="quotes"]|order(_createdAt asc)    {heading, quote, author, maxwidth}
 export type QuotesQueryResult = Array<{
   heading: string | null;
   quote: string | null;
@@ -409,7 +453,7 @@ export type QuotesQueryResult = Array<{
   maxwidth: "max-w-2xl" | "max-w-3xl" | "max-w-4xl" | "max-w-xl" | null;
 }>;
 // Variable: booksQuery
-// Query: *    [_type=="books"]|order(date asc)    {title, author, image, genre}
+// Query: *    [_type=="books"]|order(_createdAt asc)    {title, author, image, genre}
 export type BooksQueryResult = Array<{
   title: string | null;
   author: string | null;
@@ -432,9 +476,13 @@ export type BooksQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "*\n    [_type == \"skills\"] | order(_createdAt asc) {\n        title,\n        description,\n        skills[] {'name': name->name, variant}\n    }\n": SkillsQueryResult;
+    "*\n    [_type==\"experiences\"]|order(_createdAt desc)\n    {title, company, period, description, achievements, history}\n": ExperiencesQueryResult;
+    "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
+    "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
     "*\n    [_type==\"philosophy\"][0]\n    {title, philosophy, imageLight, imageDark}\n": PhilosophyQueryResult;
-    "*\n    [_type==\"inspirations\"]|order(date asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
-    "*\n    [_type==\"quotes\"]|order(date asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;
-    "*\n    [_type==\"books\"]|order(date asc)\n    {title, author, image, genre}\n": BooksQueryResult;
+    "*\n    [_type==\"inspirations\"]|order(_createdAt asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
+    "*\n    [_type==\"quotes\"]|order(_createdAt asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;
+    "*\n    [_type==\"books\"]|order(_createdAt asc)\n    {title, author, image, genre}\n": BooksQueryResult;
   }
 }

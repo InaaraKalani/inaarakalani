@@ -29,8 +29,7 @@ export const educationSchemaType = defineType({
       name: "achievements",
       title: "Achievements",
       type: "array",
-      of: [{ type: "string" }],
-      validation: required,
+      of: [{ type: "string", validation: required }],
     },
   ],
 });

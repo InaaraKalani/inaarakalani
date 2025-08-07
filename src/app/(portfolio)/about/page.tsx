@@ -4,6 +4,13 @@ import AboutExtracurricularsSection from "@/components/about-sections/AboutExtra
 import AboutHeroSection from "@/components/about-sections/AboutHeroSection";
 import AboutSkillsSection from "@/components/about-sections/AboutSkillsSection";
 import CTASection from "@/components/layout/CTASection";
+import { sanityFetch } from "@/sanity/lib/live";
+import {
+  educationQuery,
+  experiencesQuery,
+  extracurricularsQuery,
+  skillsQuery,
+} from "@/sanity/queries/about.queries";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,14 +28,21 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { data: skills } = await sanityFetch({ query: skillsQuery });
+  const { data: experiences } = await sanityFetch({ query: experiencesQuery });
+  const { data: education } = await sanityFetch({ query: educationQuery });
+  const { data: extracurriculars } = await sanityFetch({
+    query: extracurricularsQuery,
+  });
+
   return (
     <main className="flex-1">
       <AboutHeroSection />
-      <AboutSkillsSection />
-      <AboutExperienceSection />
-      <AboutAcademicsSection />
-      <AboutExtracurricularsSection />
+      <AboutSkillsSection skills={skills} />
+      <AboutExperienceSection experiences={experiences} />
+      <AboutAcademicsSection education={education} />
+      <AboutExtracurricularsSection extracurriculars={extracurriculars} />
       <CTASection />
     </main>
   );

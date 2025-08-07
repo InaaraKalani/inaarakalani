@@ -12,7 +12,7 @@ export const experienceSchemaType = defineType({
     {
       name: "description",
       title: "Description",
-      type: "string",
+      type: "text",
       validation: required,
     },
     {

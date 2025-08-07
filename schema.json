@@ -595,7 +595,7 @@
     }
   },
   {
-    "name": "extracurricular",
+    "name": "extracurriculars",
     "type": "document",
     "attributes": {
       "_id": {
@@ -608,7 +608,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "extracurricular"
+          "value": "extracurriculars"
         }
       },
       "_createdAt": {
@@ -898,15 +898,15 @@
           "of": [
             {
               "type": "string",
-              "value": "frontend"
+              "value": "Frontend"
             },
             {
               "type": "string",
-              "value": "backend"
+              "value": "Backend"
             },
             {
               "type": "string",
-              "value": "other-tools"
+              "value": "Other Tools"
             }
           ]
         },

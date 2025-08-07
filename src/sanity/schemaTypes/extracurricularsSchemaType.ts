@@ -1,9 +1,9 @@
 import { defineType } from "sanity";
 import { required } from "./validations";
 
-export const extracurricularSchemaType = defineType({
-  name: "extracurricular",
-  title: "Extracurricular",
+export const extracurricularsSchemaType = defineType({
+  name: "extracurriculars",
+  title: "Extracurriculars",
   type: "document",
   fields: [
     { name: "title", title: "Title", type: "string", validation: required },
@@ -11,7 +11,7 @@ export const extracurricularSchemaType = defineType({
     {
       name: "description",
       title: "Description",
-      type: "string",
+      type: "text",
       validation: required,
     },
     {

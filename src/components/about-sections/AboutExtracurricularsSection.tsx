@@ -1,10 +1,14 @@
-import { extracurricularActivities } from "@/data/about-me.data";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
 import { Badge } from "../ui/badge";
+import { ExtracurricularsQueryResult } from "@/sanity/lib/types";
 
-export default function AboutExtracurricularsSection() {
+type props = { extracurriculars: ExtracurricularsQueryResult };
+
+export default function AboutExtracurricularsSection({
+  extracurriculars,
+}: props) {
   return (
     <section className="w-full py-12 md:py-24 bg-muted/30">
       <AnimatedSection className="container" animation="fade-up">
@@ -22,7 +26,7 @@ export default function AboutExtracurricularsSection() {
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-2"
             staggerDelay={200}
           >
-            {extracurricularActivities.map((activity, index) => (
+            {extracurriculars.map((activity, index) => (
               <Card
                 key={index}
                 className="border-primary/10 hover:border-primary/20 transition-colors hover-lift h-full"
@@ -42,7 +46,7 @@ export default function AboutExtracurricularsSection() {
                     staggerDelay={100}
                     className="flex flex-wrap gap-2"
                   >
-                    {activity.highlights.map((highlight, highlightIndex) => (
+                    {activity.highlights?.map((highlight, highlightIndex) => (
                       <Badge
                         key={highlightIndex}
                         variant="muted"
