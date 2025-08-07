@@ -1,6 +1,5 @@
 "use client";
 
-import { inspiringWomen } from "@/data/values.data";
 import Image from "next/image";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
@@ -13,8 +12,13 @@ import {
 } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+import { InspirationsQueryResult } from "@/sanity/lib/types";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function ValuesInspirationSection() {
+type props = {
+  inspirations: InspirationsQueryResult;
+};
+export default function ValuesInspirationSection({ inspirations }: props) {
   const autoplay = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
 
   return (
@@ -38,7 +42,7 @@ export default function ValuesInspirationSection() {
             onMouseLeave={() => autoplay.current.play()}
           >
             <CarouselContent className="-ml-6">
-              {[...inspiringWomen, ...inspiringWomen].map((woman, index) => (
+              {inspirations.map((woman, index) => (
                 <CarouselItem
                   className="md:basis-1/2 lg:basis-1/3 pl-6 pt-12"
                   key={index}
@@ -47,10 +51,10 @@ export default function ValuesInspirationSection() {
                     {/* Image */}
                     <div className="relative overflow-hidden">
                       <Image
-                        src={woman.image}
+                        src={urlFor(woman.image!).url() || ""}
                         width="500"
                         height="300"
-                        alt={woman.name}
+                        alt={woman.name!}
                         className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
                       />
 
@@ -62,7 +66,7 @@ export default function ValuesInspirationSection() {
                     <CardHeader className="flex-1 pt">
                       <div className="flex items-start gap-3">
                         <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 hover-rotate shrink-0">
-                          <woman.icon className="h-5 w-5 text-accent group-hover:animate-wiggle" />
+                          {/* <woman.icon className="h-5 w-5 text-accent group-hover:animate-wiggle" /> */}
                         </div>
                         <div>
                           <CardTitle className="text-lg">

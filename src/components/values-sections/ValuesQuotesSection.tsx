@@ -1,6 +1,5 @@
 "use client";
 
-import { favoriteQuotes } from "@/data/values.data";
 import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import { Quote } from "lucide-react";
@@ -15,8 +14,11 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import { useRef } from "react";
+import { QuotesQueryResult } from "@/sanity/lib/types";
 
-export default function ValuesQuotesSection() {
+type props = { quotes: QuotesQueryResult };
+
+export default function ValuesQuotesSection({ quotes }: props) {
   const autoplay = useRef(Autoplay({ delay: 10000, stopOnInteraction: false }));
 
   return (
@@ -40,7 +42,7 @@ export default function ValuesQuotesSection() {
           onMouseLeave={() => autoplay.current.play()}
         >
           <CarouselContent>
-            {favoriteQuotes.map((quote, index) => (
+            {quotes.map((quote, index) => (
               <CarouselItem className="p-4 pl-8" key={index}>
                 <Card
                   className={cn(
@@ -64,7 +66,7 @@ export default function ValuesQuotesSection() {
                     <CardDescription
                       className={cn(
                         "text-base sm:text-xl text-muted-foreground leading-relaxed animate-fade-up delay-100 whitespace-pre-line mx-auto",
-                        quote.maxWidth
+                        quote.maxwidth
                       )}
                     >
                       <blockquote>“{quote.quote}”</blockquote>
@@ -81,7 +83,7 @@ export default function ValuesQuotesSection() {
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
-          <CarouselDots slides={favoriteQuotes.length} />
+          <CarouselDots slides={quotes.length} />
         </Carousel>
       </AnimatedSection>
     </section>
