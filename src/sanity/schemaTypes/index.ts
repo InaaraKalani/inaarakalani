@@ -9,17 +9,22 @@ import { experienceSchemaType } from "./experienceSchemaType";
 import { educationSchemaType } from "./educationSchemaType";
 import { extracurricularsSchemaType } from "./extracurricularsSchemaType";
 import { philosophySchemaType } from "./philosophySchemaType";
+import { achievementsSchemaType } from "./achievementsSchemaType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    projectSchemaType,
-    technologySchemaType,
+    // Landing
+    achievementsSchemaType,
 
     // About
     skillSchemaType,
     experienceSchemaType,
     educationSchemaType,
     extracurricularsSchemaType,
+
+    // Projects
+    projectSchemaType,
+    technologySchemaType,
 
     // Values
     philosophySchemaType,

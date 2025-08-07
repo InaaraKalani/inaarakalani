@@ -117,6 +117,45 @@ export type Philosophy = {
   };
 };
 
+export type Projects = {
+  _id: string;
+  _type: "projects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  longDescription?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  liveUrl?: string;
+  githubUrl?: string;
+  gitlabUrl?: string;
+  category?: "frontend" | "backend" | "fullstack";
+  status?: "completed" | "ongoing";
+  featured?: boolean;
+  year?: string;
+  team?: string;
+  technologies?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "technologies";
+  }>;
+  highlights?: Array<string>;
+};
+
 export type Extracurriculars = {
   _id: string;
   _type: "extracurriculars";
@@ -191,43 +230,15 @@ export type Technologies = {
   variant?: "primary" | "accent" | "neutral";
 };
 
-export type Projects = {
+export type Achievements = {
   _id: string;
-  _type: "projects";
+  _type: "achievements";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
+  highlight?: string;
   description?: string;
-  longDescription?: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  liveUrl?: string;
-  githubUrl?: string;
-  gitlabUrl?: string;
-  category?: "frontend" | "backend" | "fullstack";
-  status?: "completed" | "ongoing";
-  featured?: boolean;
-  year?: string;
-  team?: string;
-  technologies?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "technologies";
-  }>;
-  highlights?: Array<string>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -348,7 +359,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Extracurriculars | Education | Experiences | Skills | Technologies | Projects | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Projects | Extracurriculars | Education | Experiences | Skills | Technologies | Achievements | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: src/sanity/queries/about.queries.ts
 // Variable: skillsQuery
@@ -392,6 +403,15 @@ export type ExtracurricularsQueryResult = Array<{
   description: string | null;
   icon: string | null;
   highlights: Array<string> | null;
+}>;
+
+// Source: src/sanity/queries/landing.queries.ts
+// Variable: achievementsQuery
+// Query: *    [_type=="achievements"]|order(_createdAt asc)    {title, highlight, description}
+export type AchievementsQueryResult = Array<{
+  title: string | null;
+  highlight: string | null;
+  description: string | null;
 }>;
 
 // Source: src/sanity/queries/values.queries.ts
@@ -480,6 +500,7 @@ declare module "@sanity/client" {
     "*\n    [_type==\"experiences\"]|order(_createdAt desc)\n    {title, company, period, description, achievements, history}\n": ExperiencesQueryResult;
     "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
     "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
+    "*\n    [_type==\"achievements\"]|order(_createdAt asc)\n    {title, highlight, description}\n": AchievementsQueryResult;
     "*\n    [_type==\"philosophy\"][0]\n    {title, philosophy, imageLight, imageDark}\n": PhilosophyQueryResult;
     "*\n    [_type==\"inspirations\"]|order(_createdAt asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
     "*\n    [_type==\"quotes\"]|order(_createdAt asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;
