@@ -6,11 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:extract": "pnpm dlx sanity@latest schema extract",
+    "db:generate": "pnpm dlx sanity@latest typegen generate"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
+    "@sanity/client": "^7.8.2",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^4.3.0",
     "class-variance-authority": "^0.7.1",
