@@ -1,5 +1,10 @@
 import { defineQuery } from "next-sanity";
 
+export const philosophyQuery = defineQuery(`*
+    [_type=="philosophy"][0]
+    {title, philosophy, imageLight, imageDark}
+`);
+
 export const inspirationsQuery = defineQuery(`*
     [_type=="inspirations"]|order(date asc)
     {name, title, image, impact}

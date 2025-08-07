@@ -7,7 +7,7 @@ export const quoteSchemaType = defineType({
   type: "document",
   fields: [
     { name: "heading", title: "Heading", type: "string", validation: required },
-    { name: "quote", title: "Quote", type: "string", validation: required },
+    { name: "quote", title: "Quote", type: "text", validation: required },
     { name: "author", title: "Author", type: "string", validation: required },
     {
       name: "maxwidth",

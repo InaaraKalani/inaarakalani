@@ -8,6 +8,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import {
   booksQuery,
   inspirationsQuery,
+  philosophyQuery,
   quotesQuery,
 } from "@/sanity/queries/values.queries";
 
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ValuesPage() {
+  const { data: philosophy } = await sanityFetch({ query: philosophyQuery });
   const { data: quotes } = await sanityFetch({ query: quotesQuery });
   const { data: inspirations } = await sanityFetch({
     query: inspirationsQuery,
@@ -34,7 +36,7 @@ export default async function ValuesPage() {
 
   return (
     <main className="flex-1">
-      <ValuesHeroSection />
+      <ValuesHeroSection philosophy={philosophy} />
       <ValuesInspirationSection inspirations={inspirations} />
       <ValuesQuotesSection quotes={quotes} />
       <ValuesBooksSection books={books} />

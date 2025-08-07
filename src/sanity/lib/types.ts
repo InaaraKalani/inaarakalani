@@ -13,70 +13,6 @@
  */
 
 // Source: schema.json
-export type Extracurricular = {
-  _id: string;
-  _type: "extracurricular";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  icon?: string;
-  description?: string;
-  highlights?: Array<string>;
-};
-
-export type Education = {
-  _id: string;
-  _type: "education";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  description?: string;
-  institution?: string;
-  period?: string;
-  achievements?: Array<string>;
-};
-
-export type Experiences = {
-  _id: string;
-  _type: "experiences";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  company?: string;
-  period?: string;
-  description?: string;
-  achievements?: Array<string>;
-  history?: Array<{
-    title?: string;
-    company?: string;
-    period?: string;
-    _key: string;
-  }>;
-};
-
-export type Skills = {
-  _id: string;
-  _type: "skills";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: "frontend" | "backend" | "other-tools";
-  description?: string;
-  skills?: Array<{
-    name?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "technologies";
-    };
-    variant?: "primary" | "accent" | "ghost";
-    _key: string;
-  }>;
-};
-
 export type Books = {
   _id: string;
   _type: "books";
@@ -145,6 +81,104 @@ export type Inspirations = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+};
+
+export type Philosophy = {
+  _id: string;
+  _type: "philosophy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  philosophy?: string;
+  imageLight?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  imageDark?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
+export type Extracurricular = {
+  _id: string;
+  _type: "extracurricular";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  icon?: string;
+  description?: string;
+  highlights?: Array<string>;
+};
+
+export type Education = {
+  _id: string;
+  _type: "education";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  institution?: string;
+  period?: string;
+  achievements?: Array<string>;
+};
+
+export type Experiences = {
+  _id: string;
+  _type: "experiences";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  company?: string;
+  period?: string;
+  description?: string;
+  achievements?: Array<string>;
+  history?: Array<{
+    title?: string;
+    company?: string;
+    period?: string;
+    _key: string;
+  }>;
+};
+
+export type Skills = {
+  _id: string;
+  _type: "skills";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: "frontend" | "backend" | "other-tools";
+  description?: string;
+  skills?: Array<{
+    name?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "technologies";
+    };
+    variant?: "primary" | "accent" | "ghost";
+    _key: string;
+  }>;
 };
 
 export type Technologies = {
@@ -314,9 +348,39 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Extracurricular | Education | Experiences | Skills | Books | Quotes | Inspirations | Technologies | Projects | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Extracurricular | Education | Experiences | Skills | Technologies | Projects | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: src/sanity/queries/values.queries.ts
+// Variable: philosophyQuery
+// Query: *    [_type=="philosophy"][0]    {title, philosophy, imageLight, imageDark}
+export type PhilosophyQueryResult = {
+  title: string | null;
+  philosophy: string | null;
+  imageLight: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  imageDark: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+} | null;
 // Variable: inspirationsQuery
 // Query: *    [_type=="inspirations"]|order(date asc)    {name, title, image, impact}
 export type InspirationsQueryResult = Array<{
@@ -368,6 +432,7 @@ export type BooksQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "*\n    [_type==\"philosophy\"][0]\n    {title, philosophy, imageLight, imageDark}\n": PhilosophyQueryResult;
     "*\n    [_type==\"inspirations\"]|order(date asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
     "*\n    [_type==\"quotes\"]|order(date asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;
     "*\n    [_type==\"books\"]|order(date asc)\n    {title, author, image, genre}\n": BooksQueryResult;
