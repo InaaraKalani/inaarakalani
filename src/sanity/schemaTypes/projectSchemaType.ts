@@ -6,12 +6,7 @@ export const projectSchemaType = defineType({
   title: "Projects",
   type: "document",
   fields: [
-    {
-      name: "title",
-      title: "Title",
-      type: "string",
-      validation: required,
-    },
+    { name: "title", title: "Title", type: "string", validation: required },
     {
       name: "description",
       title: "Description",
@@ -24,15 +19,12 @@ export const projectSchemaType = defineType({
       type: "text",
       validation: required,
     },
-    {
-      name: "image",
-      title: "Image",
-      type: "image",
-      validation: required,
-    },
+    { name: "image", title: "Image", type: "image", validation: required },
+    { name: "year", title: "Year", type: "number", validation: required },
     { name: "liveUrl", title: "Live URL", type: "url" },
     { name: "githubUrl", title: "Github URL", type: "url" },
     { name: "gitlabUrl", title: "Gitlab URL", type: "url" },
+    { name: "featured", title: "Featured", type: "boolean" },
     {
       name: "category",
       title: "Category",
@@ -58,9 +50,40 @@ export const projectSchemaType = defineType({
         ],
       },
     },
-    { name: "featured", title: "Featured", type: "boolean" },
-    { name: "year", title: "Year", type: "string", validation: required },
-    { name: "team", title: "Team", type: "string", validation: required },
+    {
+      name: "teamType",
+      title: "Team Type",
+      type: "string",
+      validation: required,
+      options: {
+        list: [
+          { title: "Solo Project", value: "solo" },
+          { title: "Team Project", value: "team" },
+        ],
+      },
+    },
+    {
+      name: "teamCount",
+      title: "Number of Developers",
+      type: "number",
+      hidden: ({ document }) => document?.teamType !== "team",
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document as { teamType?: string };
+          if (doc?.teamType === "team" && !value) {
+            return "Please specify the number of developers in the team";
+          } else if (value === 1) {
+            return "Number of developers should be greater than 1 for team projects.";
+          }
+          return true;
+        }),
+    },
+    {
+      name: "applications",
+      title: "Names of Applications/Products (if more than 1)",
+      type: "array",
+      of: [{ type: "string" }],
+    },
     {
       name: "technologies",
       title: "Technologies",

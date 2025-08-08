@@ -1,8 +1,3 @@
-import {
-  ProjectCategory,
-  ProjectStatus,
-  ProjectType,
-} from "@/data/projects.data";
 import { Calendar, ExternalLink, Search, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,9 +14,16 @@ import {
 } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
 import { useState } from "react";
+import { ProjectsQueryResult } from "@/sanity/lib/types";
+import {
+  ProjectCategory,
+  ProjectStatus,
+  ProjectType,
+} from "@/sanity/lib/custom-types";
+import { urlFor } from "@/sanity/lib/image";
 
 type ProjectsGridSectionProps = {
-  projects: ProjectType[];
+  projects: ProjectsQueryResult;
   setSearchTerm: (value: string) => void;
   setSelectedCategory: (value: ProjectCategory | "") => void;
   setSelectedStatus: (value: ProjectStatus | "") => void;
@@ -33,18 +35,18 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
 
   const technologies = showMore
     ? project.technologies
-    : project.technologies.slice(0, 4);
+    : project.technologies?.slice(0, 4);
 
   return (
     <Card className="h-full overflow-hidden border-primary/10 hover:border-primary/20 transition-all hover-lift group animate-card-entrance pt-0">
       {/* Image */}
       <div className="relative overflow-hidden">
-        <Link href={project.liveUrl} target="_blank">
+        <Link href={project.liveUrl || ""} target="_blank">
           <Image
-            src={project.image || "/images/placeholder.svg"}
+            src={urlFor(project.image!).url() || "/images/placeholder.svg"}
             width="500"
             height="300"
-            alt={project.title}
+            alt={project.title!}
             className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
           />
 
@@ -54,12 +56,8 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
 
         {/* Status Badge */}
         <div className="absolute top-3 left-3 z-10">
-          <Badge
-            variant={
-              project.status === ProjectStatus.completed ? "purple" : "orange"
-            }
-          >
-            {project.status}
+          <Badge variant={project.status === "completed" ? "purple" : "orange"}>
+            {project.status === "completed" ? "Completed" : "In Progress"}
           </Badge>
         </div>
 
@@ -82,6 +80,10 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
             <CardDescription className="text-sm mb-3">
               {project.description}
             </CardDescription>
+
+            <p className="text-sm text-muted-foreground mb-3">
+              {project.longDescription}
+            </p>
           </div>
         </div>
 
@@ -93,15 +95,17 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
           </div>
           <div className="flex items-center gap-1">
             <Users className="h-3 w-3" />
-            {project.team}
+            {project.teamCount
+              ? project.teamCount + " Developers"
+              : "Solo Project"}
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="flex-1">
+      <CardContent className="flex-1 space-y-4">
         {/* Technologies */}
-        <StaggeredList className="flex flex-wrap gap-1 mb-4" staggerDelay={100}>
-          {technologies.map((tech, index) => (
+        <StaggeredList className="flex flex-wrap gap-1" staggerDelay={100}>
+          {technologies?.map((tech, index) => (
             <Badge
               key={index}
               variant="primaryOutline"
@@ -110,24 +114,24 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
               {tech.name}
             </Badge>
           ))}
-          {project.technologies.length > 4 && !showMore && (
+          {project.technologies!.length > 4 && !showMore && (
             <Badge
               variant="outline"
               className="text-xs"
               onClick={() => setShowMore(true)}
             >
-              +{project.technologies.length - 4} more
+              +{project.technologies!.length - 4} more
             </Badge>
           )}
         </StaggeredList>
 
         {/* Highlights */}
-        <div className="mb-4">
+        <div>
           <p className="text-xs font-medium text-muted-foreground mb-2">
             Key Features:
           </p>
           <StaggeredList className="flex flex-wrap gap-1">
-            {project.highlights.slice(0, 2).map((highlight, index) => (
+            {project.highlights?.slice(0, 2).map((highlight, index) => (
               <Badge key={index} variant="accent" className="text-xs">
                 {highlight}
               </Badge>
@@ -141,7 +145,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
         {/* Live Demo Button */}
         {project.liveUrl && (
           <Button variant="ghost" asChild className="flex-1">
-            <Link href={project.liveUrl} target="_blank">
+            <Link href={project.liveUrl || ""} target="_blank">
               <ExternalLink className="size-4" />
               Live Demo
             </Link>

@@ -7,7 +7,7 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from "next-sanity/studio";
+import { NextStudio, metadata as sanityMetadata } from "next-sanity/studio";
 import config from "@/../sanity.config";
 import { Metadata } from "next";
 export const dynamic = "force-static";
@@ -15,6 +15,7 @@ export { viewport } from "next-sanity/studio";
 
 export const metadata: Metadata = {
   title: "Database | Inaara Kalani",
+  ...sanityMetadata,
 };
 
 export default function StudioPage() {
