@@ -5,8 +5,12 @@ import LandingAchievementsSection from "@/components/landing-sections/LandingAch
 import CTASection from "@/components/layout/CTASection";
 import { sanityFetch } from "@/sanity/lib/live";
 import { achievementsQuery } from "@/sanity/queries/landing.queries";
+import { featuredProjectsQuery } from "@/sanity/queries/projects.queries";
 
 export default async function Home() {
+  const { data: projects } = await sanityFetch({
+    query: featuredProjectsQuery,
+  });
   const { data: achievements } = await sanityFetch({
     query: achievementsQuery,
   });
@@ -15,7 +19,7 @@ export default async function Home() {
     <main className="flex-1">
       <LandingHeroSection />
       <LandingAboutMeSection />
-      <LandingProjectsSection />
+      <LandingProjectsSection projects={projects} />
       <LandingAchievementsSection achievements={achievements} />
       <CTASection />
     </main>
