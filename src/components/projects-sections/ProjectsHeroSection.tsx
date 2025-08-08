@@ -1,9 +1,11 @@
-import { projectStats } from "@/data/projects.data";
 import { AnimatedSection } from "../ui/animated-section";
 import { StaggeredList } from "../ui/staggered-list";
 import { ParticleSystem } from "../ui/particle-system";
+import { ProjectStatsQueryResult } from "@/sanity/lib/types";
 
-export default function ProjectsHeroSection() {
+type props = { stats: ProjectStatsQueryResult };
+
+export default function ProjectsHeroSection({ stats }: props) {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
       <ParticleSystem />
@@ -32,7 +34,7 @@ export default function ProjectsHeroSection() {
           >
             <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift cursor-pointer">
               <div className="text-2xl font-bold text-primary mb-1">
-                {projectStats.total}
+                {stats.totalProjects}
               </div>
               <div className="text-sm text-muted-foreground">
                 Total Projects
@@ -40,19 +42,19 @@ export default function ProjectsHeroSection() {
             </div>
             <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift cursor-pointer">
               <div className="text-2xl font-bold text-accent mb-1">
-                {projectStats.completed}
+                {stats.completedProjects}
               </div>
               <div className="text-sm text-muted-foreground">Completed</div>
             </div>
             <div className="text-center p-4 rounded-xl border border-primary/10 hover-lift cursor-pointer">
               <div className="text-2xl font-bold text-primary mb-1">
-                {projectStats.inProgress}
+                {stats.ongoingProjects}
               </div>
               <div className="text-sm text-muted-foreground">In Progress</div>
             </div>
             <div className="text-center p-4 rounded-xl border border-accent/10 hover-lift cursor-pointer">
               <div className="text-2xl font-bold text-accent mb-1">
-                {projectStats.technologies}
+                {stats.technologies}
               </div>
               <div className="text-sm text-muted-foreground">Technologies</div>
             </div>

@@ -417,8 +417,42 @@ export type AchievementsQueryResult = Array<{
 }>;
 
 // Source: src/sanity/queries/projects.queries.ts
+// Variable: projectStatsQuery
+// Query: {  'totalProjects': count(*[_type == "projects"]),  'completedProjects': count(*[_type == "projects" && status=="completed"]),  'ongoingProjects': count(*[_type == "projects" && status=="ongoing"]),  'technologies': count(*[_type == "technologies"])}
+export type ProjectStatsQueryResult = {
+  totalProjects: number;
+  completedProjects: number;
+  ongoingProjects: number;
+  technologies: number;
+};
+// Variable: featuredProjectsQuery
+// Query: *  [_type == "projects" && featured == true]  {    title,    description,    longDescription,    image,    liveUrl,    githubUrl,    gitlabUrl,    technologies[]->{name, variant},  }
+export type FeaturedProjectsQueryResult = Array<{
+  title: string | null;
+  description: string | null;
+  longDescription: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  liveUrl: string | null;
+  githubUrl: string | null;
+  gitlabUrl: string | null;
+  technologies: Array<{
+    name: string | null;
+    variant: "accent" | "neutral" | "primary" | null;
+  }> | null;
+}>;
 // Variable: projectsQuery
-// Query: *    [_type == "projects"]    | order(year desc, _createdAt desc)    {      title,      description,      longDescription,      image,      year,      liveUrl,      githubUrl,      gitlabUrl,      featured,      category,      status,      teamType,      teamCount,      applications,      technologies[]->{name, variant},      highlights    }
+// Query: *  [_type == "projects"]  | order(year desc, _createdAt desc)  {    title,    description,    longDescription,    image,    year,    liveUrl,    githubUrl,    gitlabUrl,    featured,    category,    status,    teamType,    teamCount,    applications,    technologies[]->{name, variant},    highlights  }
 export type ProjectsQueryResult = Array<{
   title: string | null;
   description: string | null;
@@ -539,7 +573,9 @@ declare module "@sanity/client" {
     "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
     "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
     "*\n    [_type==\"achievements\"]|order(_createdAt asc)\n    {title, highlight, description}\n": AchievementsQueryResult;
-    "*\n    [_type == \"projects\"]\n    | order(year desc, _createdAt desc)\n    {\n      title,\n      description,\n      longDescription,\n      image,\n      year,\n      liveUrl,\n      githubUrl,\n      gitlabUrl,\n      featured,\n      category,\n      status,\n      teamType,\n      teamCount,\n      applications,\n      technologies[]->{name, variant},\n      highlights\n    }  \n": ProjectsQueryResult;
+    "{\n  'totalProjects': count(*[_type == \"projects\"]),\n  'completedProjects': count(*[_type == \"projects\" && status==\"completed\"]),\n  'ongoingProjects': count(*[_type == \"projects\" && status==\"ongoing\"]),\n  'technologies': count(*[_type == \"technologies\"])\n}": ProjectStatsQueryResult;
+    "*\n  [_type == \"projects\" && featured == true]\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    technologies[]->{name, variant},\n  }  \n": FeaturedProjectsQueryResult;
+    "*\n  [_type == \"projects\"]\n  | order(year desc, _createdAt desc)\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    year,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    featured,\n    category,\n    status,\n    teamType,\n    teamCount,\n    applications,\n    technologies[]->{name, variant},\n    highlights\n  }  \n": ProjectsQueryResult;
     "*\n    [_type==\"philosophy\"][0]\n    {title, philosophy, imageLight, imageDark}\n": PhilosophyQueryResult;
     "*\n    [_type==\"inspirations\"]|order(_createdAt asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
     "*\n    [_type==\"quotes\"]|order(_createdAt asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;

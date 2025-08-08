@@ -3,7 +3,10 @@ import ProjectsHeroSection from "@/components/projects-sections/ProjectsHeroSect
 import CTASection from "@/components/layout/CTASection";
 import { Metadata } from "next";
 import { sanityFetch } from "@/sanity/lib/live";
-import { projectsQuery } from "@/sanity/queries/projects.queries";
+import {
+  projectsQuery,
+  projectStatsQuery,
+} from "@/sanity/queries/projects.queries";
 
 export const metadata: Metadata = {
   title: "Projects | Inaara Kalani",
@@ -20,11 +23,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
+  const { data: stats } = await sanityFetch({ query: projectStatsQuery });
   const { data: projects } = await sanityFetch({ query: projectsQuery });
 
   return (
     <main className="flex-1">
-      <ProjectsHeroSection />
+      <ProjectsHeroSection stats={stats} />
       <ProjectsFilterGridSection projects={projects} />
       <CTASection />
     </main>
