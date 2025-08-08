@@ -1,4 +1,4 @@
-import { skills } from "@/data/about-me.data";
+import { AppWindow, Database, PencilRuler } from "lucide-react";
 import { AnimatedSection } from "../ui/animated-section";
 import { Badge } from "../ui/badge";
 import {
@@ -9,8 +9,11 @@ import {
   CardTitle,
 } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
+import { SkillsQueryResult } from "@/sanity/lib/types";
 
-export default function AboutSkillsSection() {
+type props = { skills: SkillsQueryResult };
+
+export default function AboutSkillsSection({ skills }: props) {
   return (
     <section className="w-full py-12 md:py-24">
       <AnimatedSection className="container" animation="fade-up">
@@ -35,12 +38,20 @@ export default function AboutSkillsSection() {
               >
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 hover-rotate">
-                      <category.icon className="size-5 text-primary" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 hover-rotate text-primary">
+                      {category.title === "Frontend" && (
+                        <AppWindow className="size-5" />
+                      )}
+                      {category.title === "Backend" && (
+                        <Database className="size-5" />
+                      )}
+                      {category.title === "Other Tools" && (
+                        <PencilRuler className="size-5" />
+                      )}
                     </div>
                     <div>
                       <CardTitle className="text-lg">
-                        {category.label}
+                        {category.title}
                       </CardTitle>
                       <CardDescription className="text-sm text-muted-foreground">
                         {category.description}
@@ -53,9 +64,9 @@ export default function AboutSkillsSection() {
                     staggerDelay={100}
                     className="flex flex-wrap gap-2"
                   >
-                    {category.skills.map((skill) => (
+                    {category.skills?.map((skill, index) => (
                       <Badge
-                        key={skill.name}
+                        key={index}
                         variant={skill.variant}
                         className="text-sm py-1.5 px-2 hover-scale"
                       >

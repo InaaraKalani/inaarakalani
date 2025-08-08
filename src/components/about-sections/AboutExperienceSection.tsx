@@ -1,4 +1,3 @@
-import { workExperience } from "@/data/about-me.data";
 import { Briefcase, CheckCircle } from "lucide-react";
 import { AnimatedSection } from "../ui/animated-section";
 import {
@@ -9,8 +8,11 @@ import {
   CardTitle,
 } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
+import { ExperiencesQueryResult } from "@/sanity/lib/types";
 
-export default function AboutExperienceSection() {
+type props = { experiences: ExperiencesQueryResult };
+
+export default function AboutExperienceSection({ experiences }: props) {
   return (
     <section className="w-full py-12 md:py-24 bg-muted/30">
       <AnimatedSection className="container" animation="fade-up">
@@ -25,7 +27,7 @@ export default function AboutExperienceSection() {
           </div>
 
           <StaggeredList className="space-y-6" staggerDelay={200}>
-            {workExperience.map((experience, index) => (
+            {experiences.map((experience, index) => (
               <Card
                 key={index}
                 className="border-primary/10 hover:border-primary/20 transition-colors hover-lift"
@@ -59,7 +61,7 @@ export default function AboutExperienceSection() {
                       Key Achievements:
                     </h4>
                     <StaggeredList className="space-y-2" staggerDelay={100}>
-                      {experience.achievements.map(
+                      {experience.achievements?.map(
                         (achievement, achievementIndex) => (
                           <div
                             key={achievementIndex}

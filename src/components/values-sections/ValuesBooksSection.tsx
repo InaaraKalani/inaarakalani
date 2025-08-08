@@ -1,11 +1,16 @@
-import { books } from "@/data/values.data";
 import { BookOpenText } from "lucide-react";
 import Image from "next/image";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
+import { BooksQueryResult } from "@/sanity/lib/types";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function ValuesBooksSection() {
+type props = {
+  books: BooksQueryResult;
+};
+
+export default function ValuesBooksSection({ books }: props) {
   return (
     <section className="w-full py-12 md:py-24">
       <AnimatedSection className="container" animation="fade-up">
@@ -32,19 +37,19 @@ export default function ValuesBooksSection() {
                 <div className="relative overflow-hidden">
                   {/* Blurred Background Image */}
                   <Image
-                    src={book.image}
+                    src={urlFor(book.image!).url() || ""}
                     width="500"
                     height="300"
-                    alt={book.title}
+                    alt={book.title!}
                     className="absolute inset-0 -z-10 blur-sm aspect-video w-full object-cover transition-transform group-hover:scale-105"
                   />
 
                   {/* Book Image */}
                   <Image
-                    src={book.image}
+                    src={urlFor(book.image!).url() || ""}
                     width="500"
                     height="300"
-                    alt={book.title}
+                    alt={book.title!}
                     className="aspect-video w-full object-contain transition-transform group-hover:scale-105"
                   />
 

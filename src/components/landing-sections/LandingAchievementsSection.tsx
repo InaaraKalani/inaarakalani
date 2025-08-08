@@ -8,9 +8,12 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Trophy } from "lucide-react";
-import { achievements } from "@/data/achievements.data";
+import { AchievementsQueryResult } from "@/sanity/lib/types";
+import { cn } from "@/lib/utils";
 
-export default function LandingAchievementsSection() {
+type props = { achievements: AchievementsQueryResult };
+
+export default function LandingAchievementsSection({ achievements }: props) {
   return (
     <section>
       <AnimatedSection
@@ -33,7 +36,7 @@ export default function LandingAchievementsSection() {
             className="mx-auto grid grid-cols-1 max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12"
             staggerDelay={250}
           >
-            {achievements.map((achievement, index) => (
+            {achievements?.map((achievement, index) => (
               <Card
                 key={index}
                 className="h-full border-primary/10 hover:border-primary/20 transition-colors hover-lift animate-card-entrance"
@@ -41,10 +44,23 @@ export default function LandingAchievementsSection() {
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`flex size-12 items-center justify-center rounded-lg ${achievement.color.bg} hover-rotate`}
+                      className={cn(
+                        "flex size-12 items-center justify-center rounded-lg hover-rotate",
+                        {
+                          "bg-yellow-500/10": index === 0,
+                          "bg-blue-500/10": index === 1,
+                          "bg-green-500/10": index === 2,
+                          "bg-purple-500/10": index === 3,
+                        }
+                      )}
                     >
                       <Trophy
-                        className={`size-6 ${achievement.color.text} ${achievement.color.darkText} animate-wiggle`}
+                        className={cn("size-6 animate-wiggle", {
+                          "text-yellow-600 dark:text-yellow-400": index === 0,
+                          "text-blue-600 dark:text-blue-400": index === 1,
+                          "text-green-600 dark:text-green-400": index === 2,
+                          "text-purple-600 dark:text-purple-400": index === 3,
+                        })}
                       />
                     </div>
                     <div>

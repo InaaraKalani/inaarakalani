@@ -2,13 +2,9 @@ import { Search, Star } from "lucide-react";
 import { AnimatedSection } from "../ui/animated-section";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import {
-  projectCategories,
-  ProjectCategory,
-  ProjectStatus,
-  projectStatuses,
-} from "@/data/projects.data";
 import { cn } from "@/lib/utils";
+import { ProjectCategory, ProjectStatus } from "@/sanity/lib/custom-types";
+import { AppWindow, Globe, Server, Shield, Zap } from "lucide-react";
 
 type ProjectFilterSectionProps = {
   selectedCategory: ProjectCategory | "";
@@ -20,6 +16,21 @@ type ProjectFilterSectionProps = {
   setSelectedStatus: (value: ProjectStatus | "") => void;
   setShowFeaturedOnly: (value: boolean) => void;
 };
+
+type Icon = typeof Shield;
+type StatusList = { name: string; value: ProjectStatus; icon: Icon }[];
+type CategoryList = { name: string; value: ProjectCategory; icon: Icon }[];
+
+const ProjectStatusTypes: StatusList = [
+  { name: "Completed", value: "completed", icon: Shield },
+  { name: "In Progress", value: "ongoing", icon: Zap },
+];
+
+const projectCategories: CategoryList = [
+  { name: "Frontend", value: "frontend", icon: AppWindow },
+  { name: "Backend", value: "backend", icon: Server },
+  { name: "Fullstack", value: "fullstack", icon: Globe },
+];
 
 export default function ProjectsFilterSection({
   selectedCategory,
@@ -78,7 +89,7 @@ export default function ProjectsFilterSection({
 
             {/* Status Filters */}
             <div className="flex flex-wrap gap-2">
-              {projectStatuses.map((status) => (
+              {ProjectStatusTypes.map((status) => (
                 <Button
                   key={status.value}
                   variant={

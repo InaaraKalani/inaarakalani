@@ -1,10 +1,12 @@
-import { academicBackground } from "@/data/about-me.data";
 import { GraduationCap, Star } from "lucide-react";
 import { AnimatedSection } from "../ui/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
+import { EducationQueryResult } from "@/sanity/lib/types";
 
-export default function AboutAcademicsSection() {
+type props = { education: EducationQueryResult };
+
+export default function AboutAcademicsSection({ education }: props) {
   return (
     <section className="w-full py-12 md:py-24">
       <AnimatedSection className="container" animation="fade-up">
@@ -19,7 +21,7 @@ export default function AboutAcademicsSection() {
           </div>
 
           <StaggeredList className="space-y-6" staggerDelay={200}>
-            {academicBackground.map((e, i) => (
+            {education.map((e, i) => (
               <Card
                 key={i}
                 className="border-primary/10 hover:border-primary/20 transition-colors hover-lift"

@@ -3,14 +3,16 @@
 import { useState } from "react";
 import ProjectsFilterSection from "./ProjectsFilterSection";
 import ProjectsGridSection from "./ProjectsGridSection";
+import { ProjectsQueryResult } from "@/sanity/lib/types";
 import {
   ProjectCategory,
-  projects,
   ProjectStatus,
   ProjectType,
-} from "@/data/projects.data";
+} from "@/sanity/lib/custom-types";
 
-export default function ProjectsFilterGridSection() {
+type props = { projects: ProjectsQueryResult };
+
+export default function ProjectsFilterGridSection({ projects }: props) {
   const [selectedCategory, setSelectedCategory] = useState<
     ProjectCategory | ""
   >("");
@@ -19,13 +21,13 @@ export default function ProjectsFilterGridSection() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const searchByTechnologies = (project: ProjectType) => {
-    return project.technologies.some((technology) =>
-      technology.name.toLowerCase().includes(searchTerm.toLowerCase())
+    return project.technologies?.some((technology) =>
+      technology.name?.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
 
   const searchByHighlights = (project: ProjectType) => {
-    return project.highlights.some((highlight) =>
+    return project.highlights?.some((highlight) =>
       highlight.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
@@ -33,8 +35,8 @@ export default function ProjectsFilterGridSection() {
   const filteredProjects = projects.filter((project) => {
     return (
       // Search by title, description, technologies, highlights
-      (project.title.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by title
-        project.description.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by description
+      (project.title?.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by title
+        project.description?.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by description
         searchByTechnologies(project) || // Search by technologies
         searchByHighlights(project)) && // Search by highlights
       // Filter by category

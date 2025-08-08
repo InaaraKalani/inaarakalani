@@ -1,10 +1,15 @@
-import { philosophy } from "@/data/values.data";
+import { urlFor } from "@/sanity/lib/image";
 import ProfileImageFull from "../profile-images/ProfileImageFull";
 import { AnimatedSection } from "../ui/animated-section";
 import { ParallaxElement } from "../ui/parallax-element";
 import { ParticleSystem } from "../ui/particle-system";
+import { PhilosophyQueryResult } from "@/sanity/lib/types";
 
-export default function ValuesHeroSection() {
+type props = {
+  philosophy: PhilosophyQueryResult;
+};
+
+export default function ValuesHeroSection({ philosophy }: props) {
   return (
     <section className="w-full pt-12 md:pt-20 md:pb-24 lg:pb-28 relative overflow-hidden">
       <ParticleSystem />
@@ -25,12 +30,12 @@ export default function ValuesHeroSection() {
             </h1>
 
             <h2 className="text-xl text-primary sm:text-2xl font-semibold">
-              Philosophy & Core Beliefs
+              {philosophy?.title}
             </h2>
 
             {/* Introduction */}
             <p className="text-muted-foreground md:text-lg leading-relaxed whitespace-pre-line">
-              {philosophy}
+              {philosophy?.philosophy}
             </p>
           </AnimatedSection>
 
@@ -44,7 +49,12 @@ export default function ValuesHeroSection() {
             <ParallaxElement speed={0.3}>
               <div className="relative animate-float">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 animate-pulse-glow" />
-                <ProfileImageFull />
+                {philosophy && (
+                  <ProfileImageFull
+                    dark={urlFor(philosophy.imageDark!).url()}
+                    light={urlFor(philosophy.imageLight!).url()}
+                  />
+                )}
               </div>
             </ParallaxElement>
           </AnimatedSection>

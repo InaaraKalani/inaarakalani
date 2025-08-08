@@ -4,6 +4,13 @@ import ValuesBooksSection from "@/components/values-sections/ValuesBooksSection"
 import ValuesQuotesSection from "@/components/values-sections/ValuesQuotesSection";
 import CTASection from "@/components/layout/CTASection";
 import { Metadata } from "next";
+import { sanityFetch } from "@/sanity/lib/live";
+import {
+  booksQuery,
+  inspirationsQuery,
+  philosophyQuery,
+  quotesQuery,
+} from "@/sanity/queries/values.queries";
 
 export const metadata: Metadata = {
   title: "Values | Inaara Kalani",
@@ -19,13 +26,20 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function ValuesPage() {
+export default async function ValuesPage() {
+  const { data: philosophy } = await sanityFetch({ query: philosophyQuery });
+  const { data: quotes } = await sanityFetch({ query: quotesQuery });
+  const { data: inspirations } = await sanityFetch({
+    query: inspirationsQuery,
+  });
+  const { data: books } = await sanityFetch({ query: booksQuery });
+
   return (
     <main className="flex-1">
-      <ValuesHeroSection />
-      <ValuesInspirationSection />
-      <ValuesQuotesSection />
-      <ValuesBooksSection />
+      <ValuesHeroSection philosophy={philosophy} />
+      <ValuesInspirationSection inspirations={inspirations} />
+      <ValuesQuotesSection quotes={quotes} />
+      <ValuesBooksSection books={books} />
       <CTASection />
     </main>
   );
