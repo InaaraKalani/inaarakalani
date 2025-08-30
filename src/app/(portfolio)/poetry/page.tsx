@@ -1,6 +1,8 @@
 import PoetryFeaturedSection from "@/components/poetry-sections/PoetryFeaturedSection";
 import PoetryHeroSection from "@/components/poetry-sections/PoetryHeroSection";
 import PoetryInstagramSection from "@/components/poetry-sections/PoetryInstagramSection";
+import { sanityFetch } from "@/sanity/lib/live";
+import { poetryQuery } from "@/sanity/queries/poetry.queries";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,11 +22,13 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function PoetryPage() {
+export default async function PoetryPage() {
+  const { data: poetry } = await sanityFetch({ query: poetryQuery });
+
   return (
     <main className="flex-1">
       <PoetryHeroSection />
-      <PoetryFeaturedSection />
+      <PoetryFeaturedSection poetry={poetry} />
       <PoetryInstagramSection />
     </main>
   );

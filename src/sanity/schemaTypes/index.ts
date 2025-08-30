@@ -10,6 +10,7 @@ import { educationSchemaType } from "./educationSchemaType";
 import { extracurricularsSchemaType } from "./extracurricularsSchemaType";
 import { philosophySchemaType } from "./philosophySchemaType";
 import { achievementsSchemaType } from "./achievementsSchemaType";
+import { poetrySchemaType } from "./poetrySechmaType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -31,5 +32,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     inspirationSchemaType,
     quoteSchemaType,
     bookSchemaType,
+
+    // Poetry,
+    poetrySchemaType,
   ],
 };

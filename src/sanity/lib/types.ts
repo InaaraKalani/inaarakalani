@@ -13,6 +13,20 @@
  */
 
 // Source: schema.json
+export type Poetry = {
+  _id: string;
+  _type: "poetry";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  order?: number;
+  createdAt?: string;
+  type?: "poetry" | "song";
+  tags?: Array<string>;
+  content?: string;
+};
+
 export type Books = {
   _id: string;
   _type: "books";
@@ -361,7 +375,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Books | Quotes | Inspirations | Philosophy | Projects | Extracurriculars | Education | Experiences | Skills | Technologies | Achievements | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Poetry | Books | Quotes | Inspirations | Philosophy | Projects | Extracurriculars | Education | Experiences | Skills | Technologies | Achievements | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: src/sanity/queries/about.queries.ts
 // Variable: skillsQuery
@@ -414,6 +428,17 @@ export type AchievementsQueryResult = Array<{
   title: string | null;
   highlight: string | null;
   description: string | null;
+}>;
+
+// Source: src/sanity/queries/poetry.queries.ts
+// Variable: poetryQuery
+// Query: *    [_type=="poetry"]|order(order asc)    {title, createdAt, type, tags, content}
+export type PoetryQueryResult = Array<{
+  title: string | null;
+  createdAt: string | null;
+  type: "poetry" | "song" | null;
+  tags: Array<string> | null;
+  content: string | null;
 }>;
 
 // Source: src/sanity/queries/projects.queries.ts
@@ -573,6 +598,7 @@ declare module "@sanity/client" {
     "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
     "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
     "*\n    [_type==\"achievements\"]|order(_createdAt asc)\n    {title, highlight, description}\n": AchievementsQueryResult;
+    "*\n    [_type==\"poetry\"]|order(order asc)\n    {title, createdAt, type, tags, content}\n": PoetryQueryResult;
     "{\n  'totalProjects': count(*[_type == \"projects\"]),\n  'completedProjects': count(*[_type == \"projects\" && status==\"completed\"]),\n  'ongoingProjects': count(*[_type == \"projects\" && status==\"ongoing\"]),\n  'technologies': count(*[_type == \"technologies\"])\n}": ProjectStatsQueryResult;
     "*\n  [_type == \"projects\" && featured == true]\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    technologies[]->{name, variant},\n  }  \n": FeaturedProjectsQueryResult;
     "*\n  [_type == \"projects\"]\n  | order(year desc, _createdAt desc)\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    year,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    featured,\n    category,\n    status,\n    teamType,\n    teamCount,\n    applications,\n    technologies[]->{name, variant},\n    highlights\n  }  \n": ProjectsQueryResult;

@@ -1,14 +1,13 @@
 "use client";
 
-import {
-  featuredPoetry,
-  PoetryType,
-  POETRY_PREVIEW_LENGTH,
-  FeaturedPoetry,
-} from "@/data/poetry.data";
+import { POETRY_PREVIEW_LENGTH, PoetryType } from "@/data/poetry.data";
+import { cn } from "@/lib/utils";
+import { PoetryQueryResult } from "@/sanity/lib/types";
 import { Calendar, ChevronDown, ChevronUp, Music, PenTool } from "lucide-react";
+import { useRef, useState } from "react";
 import { AnimatedSection } from "../ui/animated-section";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -17,9 +16,6 @@ import {
   CardTitle,
 } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
-import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import { useRef, useState } from "react";
 
 const getPreviewContent = (content: string) => {
   if (content.length <= POETRY_PREVIEW_LENGTH) return content;
@@ -35,7 +31,7 @@ const getPreviewContent = (content: string) => {
   return preview + "...";
 };
 
-const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
+const PoetryCard = ({ piece }: { piece: PoetryQueryResult[number] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -48,7 +44,7 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
     }
   };
 
-  const needsReadMore = piece.content.length > POETRY_PREVIEW_LENGTH;
+  const needsReadMore = piece.content!.length > POETRY_PREVIEW_LENGTH;
 
   return (
     <Card
@@ -81,7 +77,7 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
               <CardTitle className="text-xl mb-1">{piece.title}</CardTitle>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Calendar className="h-3 w-3" />
-                {piece.year}
+                {piece.createdAt}
 
                 {/* Type Badge */}
                 <span className="sm:hidden">
@@ -103,7 +99,7 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
 
         {/* Tags */}
         <StaggeredList className="flex flex-wrap gap-2" staggerDelay={100}>
-          {piece.tags.map((tag, tagIndex) => (
+          {piece.tags?.map((tag, tagIndex) => (
             <Badge
               key={tagIndex}
               variant="muted"
@@ -134,7 +130,7 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
                 opacity: 1,
               }}
             >
-              {isExpanded ? piece.content : getPreviewContent(piece.content)}
+              {isExpanded ? piece.content : getPreviewContent(piece.content!)}
             </pre>
 
             {/* Fade overlay for collapsed state */}
@@ -175,18 +171,25 @@ const PoetryCard = ({ piece }: { piece: FeaturedPoetry }) => {
   );
 };
 
-export default function PoetryFeaturedSection() {
+export default function PoetryFeaturedSection({
+  poetry,
+}: {
+  poetry: PoetryQueryResult;
+}) {
   return (
     <section className="w-full py-12 md:py-24 bg-muted/30">
       <AnimatedSection className="container" animation="fade-up">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter leading-normal sm:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-              Words from the Heart
+              Poetry & Song Lyrics
             </h2>
-            <p className="text-muted-foreground text-lg">
-              A collection of my most meaningful poems and song lyrics that
-              capture moments, emotions, and reflections from my journey
+            <p className="text-muted-foreground text-lg max-w-4xl mx-auto">
+              I have been writing poetry ever since I can remember. At some
+              point, my words developed a tune of their own, leading me into a
+              story, a song. Though I often try to find words today, I am taken
+              by surprise when words find me instead; reminding me how it was
+              before I learned the rules of any language.
             </p>
           </div>
 
@@ -194,7 +197,7 @@ export default function PoetryFeaturedSection() {
             className="columns-1 md:columns-2 gap-8 space-y-8"
             staggerDelay={200}
           >
-            {featuredPoetry.map((piece, index) => (
+            {poetry.map((piece, index) => (
               <div key={index} className="break-inside-avoid">
                 <PoetryCard piece={piece} />
               </div>
