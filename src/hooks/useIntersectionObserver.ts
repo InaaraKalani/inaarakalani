@@ -21,6 +21,9 @@ export function useIntersectionObserver({
     const element = ref.current;
     if (!element) return;
 
+    const mq = window.matchMedia("(max-width: 639px)");
+    const isSmall = mq.matches;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         const isElementIntersecting = entry.isIntersecting;
@@ -30,7 +33,10 @@ export function useIntersectionObserver({
           setHasIntersected(true);
         }
       },
-      { threshold, rootMargin }
+      {
+        threshold: isSmall ? 0 : threshold,
+        rootMargin: isSmall ? "0px 0px -10% 0px" : rootMargin,
+      }
     );
 
     observer.observe(element);

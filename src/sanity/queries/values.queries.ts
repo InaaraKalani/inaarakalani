@@ -7,7 +7,7 @@ export const philosophyQuery = defineQuery(`*
 
 export const inspirationsQuery = defineQuery(`*
     [_type=="inspirations"]|order(_createdAt asc)
-    {name, title, image, impact}
+    {name, title, image, impact, icon}
 `);
 
 export const quotesQuery = defineQuery(`*

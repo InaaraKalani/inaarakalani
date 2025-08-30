@@ -34,7 +34,7 @@ export function AnimatedSection({
 
   const getAnimationClass = () => {
     const baseClass = isVisible ? "animate-in" : "animate-out";
-    return `${baseClass} ${animation} duration-${Math.round(
+    return `${baseClass} ${animation} transition-opacity duration-${Math.round(
       duration * 1000
     )} delay-${delay}`;
   };

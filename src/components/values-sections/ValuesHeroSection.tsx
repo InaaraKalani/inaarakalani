@@ -16,10 +16,10 @@ export default function ValuesHeroSection({ philosophy }: props) {
 
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
       <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-x-6 gap-y-32">
           {/* Content */}
           <AnimatedSection
-            animation="fade-right"
+            animation="fade-left"
             className="basis-2/3 space-y-2"
             duration={1}
             delay={200}
@@ -41,7 +41,7 @@ export default function ValuesHeroSection({ philosophy }: props) {
 
           {/* Image */}
           <AnimatedSection
-            animation="fade-left"
+            animation="fade-right"
             className="flex items-center justify-center basis-1/3"
             duration={1}
             delay={400}

@@ -83,18 +83,7 @@ export type Inspirations = {
     _type: "image";
   };
   impact?: string;
-  icon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+  icon?: "stageMic" | "rocket" | "books" | "pen";
 };
 
 export type Philosophy = {
@@ -508,7 +497,7 @@ export type ExtracurricularsQueryResult = Array<{
 
 // Source: src/sanity/queries/landing.queries.ts
 // Variable: introductionQuery
-// Query: *    [_type=="introduction"][0]    {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}
+// Query: *  [_type=="introduction"][0]  {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}
 export type IntroductionQueryResult = {
   heading: string | null;
   roles: Array<string> | null;
@@ -553,7 +542,7 @@ export type IntroductionQueryResult = {
   } | null;
 } | null;
 // Variable: aboutQuery
-// Query: *    [_type=="about"][0]{    heading,    description,    education {title, "latest":reference->{description, achievements}},    skills {title, skills[] {"name": name->name, variant}},    goals {title, goals}    }
+// Query: *  [_type=="about"][0]{    heading,    description,    education {title, "latest":reference->{description, achievements}},    skills {title, skills[] {"name": name->name, variant}},    goals {title, goals}  }
 export type AboutQueryResult = {
   heading: string | null;
   description: string | null;
@@ -577,7 +566,7 @@ export type AboutQueryResult = {
   } | null;
 } | null;
 // Variable: achievementsQuery
-// Query: *    [_type=="achievements"]|order(_createdAt asc)    {title, highlight, description}
+// Query: *  [_type=="achievements"]|order(_createdAt asc)  {title, highlight, description}
 export type AchievementsQueryResult = Array<{
   title: string | null;
   highlight: string | null;
@@ -697,7 +686,7 @@ export type PhilosophyQueryResult = {
   } | null;
 } | null;
 // Variable: inspirationsQuery
-// Query: *    [_type=="inspirations"]|order(_createdAt asc)    {name, title, image, impact}
+// Query: *    [_type=="inspirations"]|order(_createdAt asc)    {name, title, image, impact, icon}
 export type InspirationsQueryResult = Array<{
   name: string | null;
   title: string | null;
@@ -714,6 +703,7 @@ export type InspirationsQueryResult = Array<{
     _type: "image";
   } | null;
   impact: string | null;
+  icon: "books" | "pen" | "rocket" | "stageMic" | null;
 }>;
 // Variable: quotesQuery
 // Query: *    [_type=="quotes"]|order(_createdAt asc)    {heading, quote, author, maxwidth}
@@ -751,15 +741,15 @@ declare module "@sanity/client" {
     "*\n    [_type==\"experiences\"]|order(_createdAt desc)\n    {title, company, period, description, achievements, history}\n": ExperiencesQueryResult;
     "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
     "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
-    "*\n    [_type==\"introduction\"][0]\n    {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}\n": IntroductionQueryResult;
-    "*\n    [_type==\"about\"][0]{\n    heading,\n    description,\n    education {title, \"latest\":reference->{description, achievements}},\n    skills {title, skills[] {\"name\": name->name, variant}},\n    goals {title, goals}\n    }\n": AboutQueryResult;
-    "*\n    [_type==\"achievements\"]|order(_createdAt asc)\n    {title, highlight, description}\n": AchievementsQueryResult;
+    "*\n  [_type==\"introduction\"][0]\n  {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}\n": IntroductionQueryResult;
+    "*\n  [_type==\"about\"][0]{\n    heading,\n    description,\n    education {title, \"latest\":reference->{description, achievements}},\n    skills {title, skills[] {\"name\": name->name, variant}},\n    goals {title, goals}\n  }\n": AboutQueryResult;
+    "*\n  [_type==\"achievements\"]|order(_createdAt asc)\n  {title, highlight, description}\n": AchievementsQueryResult;
     "*\n    [_type==\"poetry\"]|order(order asc)\n    {title, createdAt, type, tags, content}\n": PoetryQueryResult;
     "{\n  'totalProjects': count(*[_type == \"projects\"]),\n  'completedProjects': count(*[_type == \"projects\" && status==\"completed\"]),\n  'ongoingProjects': count(*[_type == \"projects\" && status==\"ongoing\"]),\n  'technologies': count(*[_type == \"technologies\"])\n}": ProjectStatsQueryResult;
     "*\n  [_type == \"projects\" && featured == true]\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    technologies[]->{name, variant},\n  }  \n": FeaturedProjectsQueryResult;
     "*\n  [_type == \"projects\"]\n  | order(year desc, _createdAt desc)\n  {\n    title,\n    description,\n    longDescription,\n    image,\n    year,\n    liveUrl,\n    githubUrl,\n    gitlabUrl,\n    featured,\n    category,\n    status,\n    teamType,\n    teamCount,\n    applications,\n    technologies[]->{name, variant},\n    highlights\n  }  \n": ProjectsQueryResult;
     "*\n    [_type==\"philosophy\"][0]\n    {title, philosophy, imageLight, imageDark}\n": PhilosophyQueryResult;
-    "*\n    [_type==\"inspirations\"]|order(_createdAt asc)\n    {name, title, image, impact}\n": InspirationsQueryResult;
+    "*\n    [_type==\"inspirations\"]|order(_createdAt asc)\n    {name, title, image, impact, icon}\n": InspirationsQueryResult;
     "*\n    [_type==\"quotes\"]|order(_createdAt asc)\n    {heading, quote, author, maxwidth}\n": QuotesQueryResult;
     "*\n    [_type==\"books\"]|order(_createdAt asc)\n    {title, author, image, genre}\n": BooksQueryResult;
   }
