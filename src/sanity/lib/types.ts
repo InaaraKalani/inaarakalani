@@ -184,19 +184,6 @@ export type Extracurriculars = {
   highlights?: Array<string>;
 };
 
-export type Education = {
-  _id: string;
-  _type: "education";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  description?: string;
-  institution?: string;
-  period?: string;
-  achievements?: Array<string>;
-};
-
 export type Experiences = {
   _id: string;
   _type: "experiences";
@@ -236,6 +223,53 @@ export type Skills = {
   }>;
 };
 
+export type Achievements = {
+  _id: string;
+  _type: "achievements";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  highlight?: string;
+  description?: string;
+};
+
+export type About = {
+  _id: string;
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  heading?: string;
+  description?: string;
+  education?: {
+    title?: string;
+    reference?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "education";
+    };
+  };
+  skills?: {
+    title?: string;
+    skills?: Array<{
+      name?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "technologies";
+      };
+      variant?: "primary" | "accent" | "muted" | "ghost";
+      _key: string;
+    }>;
+  };
+  goals?: {
+    title?: string;
+    goals?: Array<string>;
+  };
+};
+
 export type Technologies = {
   _id: string;
   _type: "technologies";
@@ -246,15 +280,66 @@ export type Technologies = {
   variant?: "primary" | "accent" | "neutral";
 };
 
-export type Achievements = {
+export type Education = {
   _id: string;
-  _type: "achievements";
+  _type: "education";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
-  highlight?: string;
   description?: string;
+  institution?: string;
+  period?: string;
+  achievements?: Array<string>;
+};
+
+export type Introduction = {
+  _id: string;
+  _type: "introduction";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  heading?: string;
+  roles?: Array<string>;
+  description?: string;
+  location?: string;
+  imageLight?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  imageDark?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  email?: string;
+  github?: {
+    name?: string;
+    url?: string;
+  };
+  linkedin?: {
+    name?: string;
+    url?: string;
+  };
+  instagram?: {
+    name?: string;
+    url?: string;
+  };
 };
 
 export type SanityImagePaletteSwatch = {
@@ -375,7 +460,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Poetry | Books | Quotes | Inspirations | Philosophy | Projects | Extracurriculars | Education | Experiences | Skills | Technologies | Achievements | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Poetry | Books | Quotes | Inspirations | Philosophy | Projects | Extracurriculars | Experiences | Skills | Achievements | About | Technologies | Education | Introduction | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: src/sanity/queries/about.queries.ts
 // Variable: skillsQuery
@@ -422,6 +507,75 @@ export type ExtracurricularsQueryResult = Array<{
 }>;
 
 // Source: src/sanity/queries/landing.queries.ts
+// Variable: introductionQuery
+// Query: *    [_type=="introduction"][0]    {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}
+export type IntroductionQueryResult = {
+  heading: string | null;
+  roles: Array<string> | null;
+  description: string | null;
+  location: string | null;
+  imageLight: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  imageDark: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  email: string | null;
+  github: {
+    name?: string;
+    url?: string;
+  } | null;
+  linkedin: {
+    name?: string;
+    url?: string;
+  } | null;
+  instagram: {
+    name?: string;
+    url?: string;
+  } | null;
+} | null;
+// Variable: aboutQuery
+// Query: *    [_type=="about"][0]{    heading,    description,    education {title, "latest":reference->{description, achievements}},    skills {title, skills[] {"name": name->name, variant}},    goals {title, goals}    }
+export type AboutQueryResult = {
+  heading: string | null;
+  description: string | null;
+  education: {
+    title: string | null;
+    latest: {
+      description: string | null;
+      achievements: Array<string> | null;
+    } | null;
+  } | null;
+  skills: {
+    title: string | null;
+    skills: Array<{
+      name: string | null;
+      variant: "accent" | "ghost" | "muted" | "primary" | null;
+    }> | null;
+  } | null;
+  goals: {
+    title: string | null;
+    goals: Array<string> | null;
+  } | null;
+} | null;
 // Variable: achievementsQuery
 // Query: *    [_type=="achievements"]|order(_createdAt asc)    {title, highlight, description}
 export type AchievementsQueryResult = Array<{
@@ -597,6 +751,8 @@ declare module "@sanity/client" {
     "*\n    [_type==\"experiences\"]|order(_createdAt desc)\n    {title, company, period, description, achievements, history}\n": ExperiencesQueryResult;
     "*\n    [_type==\"education\"]|order(_createdAt desc)\n    {title, description, institution, period, achievements}\n": EducationQueryResult;
     "*\n    [_type==\"extracurriculars\"]|order(_createdAt asc)\n    {title, description, icon, highlights}\n": ExtracurricularsQueryResult;
+    "*\n    [_type==\"introduction\"][0]\n    {heading, roles, description, location, imageLight, imageDark, email, github, linkedin, instagram}\n": IntroductionQueryResult;
+    "*\n    [_type==\"about\"][0]{\n    heading,\n    description,\n    education {title, \"latest\":reference->{description, achievements}},\n    skills {title, skills[] {\"name\": name->name, variant}},\n    goals {title, goals}\n    }\n": AboutQueryResult;
     "*\n    [_type==\"achievements\"]|order(_createdAt asc)\n    {title, highlight, description}\n": AchievementsQueryResult;
     "*\n    [_type==\"poetry\"]|order(order asc)\n    {title, createdAt, type, tags, content}\n": PoetryQueryResult;
     "{\n  'totalProjects': count(*[_type == \"projects\"]),\n  'completedProjects': count(*[_type == \"projects\" && status==\"completed\"]),\n  'ongoingProjects': count(*[_type == \"projects\" && status==\"ongoing\"]),\n  'technologies': count(*[_type == \"technologies\"])\n}": ProjectStatsQueryResult;

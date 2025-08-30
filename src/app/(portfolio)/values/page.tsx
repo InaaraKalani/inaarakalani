@@ -1,9 +1,8 @@
+import CTASection from "@/components/layout/CTASection";
+import ValuesBooksSection from "@/components/values-sections/ValuesBooksSection";
 import ValuesHeroSection from "@/components/values-sections/ValuesHeroSection";
 import ValuesInspirationSection from "@/components/values-sections/ValuesInspirationSection";
-import ValuesBooksSection from "@/components/values-sections/ValuesBooksSection";
 import ValuesQuotesSection from "@/components/values-sections/ValuesQuotesSection";
-import CTASection from "@/components/layout/CTASection";
-import { Metadata } from "next";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
   booksQuery,
@@ -11,6 +10,7 @@ import {
   philosophyQuery,
   quotesQuery,
 } from "@/sanity/queries/values.queries";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Values | Inaara Kalani",

@@ -10,13 +10,13 @@ export default function Footer() {
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link
             href="#"
-            className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors hover-glow"
+            className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors"
           >
             Privacy Policy
           </Link>
           <Link
             href="#"
-            className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors hover-glow"
+            className="text-xs hover:underline underline-offset-4 text-muted-foreground hover:text-foreground transition-colors"
           >
             Terms of Service
           </Link>

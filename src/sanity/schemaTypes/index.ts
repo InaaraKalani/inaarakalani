@@ -11,10 +11,14 @@ import { extracurricularsSchemaType } from "./extracurricularsSchemaType";
 import { philosophySchemaType } from "./philosophySchemaType";
 import { achievementsSchemaType } from "./achievementsSchemaType";
 import { poetrySchemaType } from "./poetrySechmaType";
+import { introductionSchemaType } from "./introductionSchemaType";
+import { aboutSchemaType } from "./aboutSchemaType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Landing
+    introductionSchemaType,
+    aboutSchemaType,
     achievementsSchemaType,
 
     // About

@@ -1,14 +1,5 @@
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 
-export const landingHeroTexts = [
-  "Full-Stack Web Developer",
-  "React Specialist",
-  "Next.js Developer",
-  "UI/UX Enthusiast",
-  "Animation Expert",
-  "AI Enthusiast",
-];
-
 export const GitHub = {
   label: "GitHub",
   name: "@inaara-kalani",

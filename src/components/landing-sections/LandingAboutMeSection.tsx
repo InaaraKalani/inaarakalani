@@ -1,8 +1,4 @@
-import {
-  academicBackground,
-  FutureGoals,
-  TechnicalSkills,
-} from "@/data/about-me.data";
+import { AboutQueryResult } from "@/sanity/lib/types";
 import { Code, GraduationCap, Target } from "lucide-react";
 import Link from "next/link";
 import { AnimatedSection } from "../ui/animated-section";
@@ -11,7 +7,11 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { StaggeredList } from "../ui/staggered-list";
 
-export default function LandingAboutMeSection() {
+export default function LandingAboutMeSection({
+  about,
+}: {
+  about: AboutQueryResult;
+}) {
   return (
     <section id="about">
       <AnimatedSection
@@ -23,10 +23,10 @@ export default function LandingAboutMeSection() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift">
-                About Me
+                {about?.heading}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                My journey in web development and what drives me forward
+                {about?.description}
               </p>
             </div>
           </div>
@@ -42,14 +42,16 @@ export default function LandingAboutMeSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 hover-rotate">
                   <GraduationCap className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">Academic Background</CardTitle>
+                <CardTitle className="text-xl">
+                  {about?.education?.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {academicBackground[0].description}
+                  {about?.education?.latest?.description}
                 </p>
                 <StaggeredList staggerDelay={100}>
-                  {academicBackground[0].achievements?.map((e, i) => (
+                  {about?.education?.latest?.achievements?.map((e, i) => (
                     <li key={i} className="flex items-center text-sm">
                       <div className="h-1.5 w-1.5 rounded-full bg-primary mr-2 animate-pulse-glow" />
                       {e}
@@ -65,16 +67,18 @@ export default function LandingAboutMeSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 hover-rotate">
                   <Code className="h-6 w-6 text-accent" />
                 </div>
-                <CardTitle className="text-xl">Technical Skills</CardTitle>
+                <CardTitle className="text-xl">
+                  {about?.skills?.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <StaggeredList
                   className="flex flex-wrap gap-2"
                   staggerDelay={50}
                 >
-                  {TechnicalSkills.map(({ skill, variant }) => (
-                    <Badge key={skill} variant={variant}>
-                      {skill}
+                  {about?.skills?.skills?.map(({ name, variant }) => (
+                    <Badge key={name} variant={variant}>
+                      {name}
                     </Badge>
                   ))}
                 </StaggeredList>
@@ -87,11 +91,11 @@ export default function LandingAboutMeSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 hover-rotate">
                   <Target className="h-6 w-6 text-accent" />
                 </div>
-                <CardTitle className="text-xl">Future Goals</CardTitle>
+                <CardTitle className="text-xl">{about?.goals?.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <StaggeredList staggerDelay={100}>
-                  {FutureGoals.map((e, i) => (
+                  {about?.goals?.goals?.map((e, i) => (
                     <li key={i} className="flex items-start text-sm">
                       <div className="shrink-0 h-1.5 w-1.5 mt-2 rounded-full bg-accent mr-2 animate-pulse-glow" />
                       {e}
