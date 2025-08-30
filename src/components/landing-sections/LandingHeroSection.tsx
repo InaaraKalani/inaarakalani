@@ -27,25 +27,25 @@ export default function LandingHeroSection({
     {
       label: "GitHub",
       name: introduction?.github?.name,
-      url: introduction?.github?.url!,
+      url: introduction?.github?.url || "",
       icon: FiGithub,
     },
     {
       label: "LinkedIn",
       name: introduction?.linkedin?.name,
-      url: introduction?.linkedin?.url!,
+      url: introduction?.linkedin?.url || "",
       icon: FiLinkedin,
     },
     {
       label: "Email",
       name: introduction?.email,
-      url: `mailto:${introduction?.email!}`,
+      url: `mailto:${introduction?.email}`,
       icon: FiMail,
     },
     {
       label: "Instagram",
       name: introduction?.instagram?.name,
-      url: introduction?.instagram?.url!,
+      url: introduction?.instagram?.url || "",
       icon: FiInstagram,
     },
   ];
