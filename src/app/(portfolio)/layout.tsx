@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Inaara Kalani Portfolio",
     images: [
       {
-        url: "/profile/profile-closeup.jpeg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Inaara Kalani Portfolio Preview",
@@ -49,10 +49,7 @@ export const metadata: Metadata = {
     images: ["/profile/profile-closeup.jpeg"],
     // creator: "@yourTwitterHandle",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   // alternates: {
   //   canonical: "https://inaarakalani.com",
   // },
