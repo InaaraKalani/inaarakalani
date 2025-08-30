@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "Inaara Kalani | Portfolio",
     description:
       "Explore Inaara Kalani’s portfolio — showcasing 4+ years of web development experience, full-stack projects, creative solutions, and personal values.",
-    images: ["/profile/profile-closeup.jpeg"],
+    images: ["/og-image.png"],
     // creator: "@yourTwitterHandle",
   },
   robots: { index: true, follow: true },
